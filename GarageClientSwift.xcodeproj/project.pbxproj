@@ -15,6 +15,8 @@
 		575992411CB13C9500A82668 /* GarageClientSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575992401CB13C9500A82668 /* GarageClientSwiftTests.swift */; };
 		5759924F1CB146FD00A82668 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5759924D1CB146FD00A82668 /* APIKit.framework */; };
 		575992501CB146FD00A82668 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5759924E1CB146FD00A82668 /* Result.framework */; };
+		575992541CB1491400A82668 /* GarageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575992531CB1491400A82668 /* GarageClient.swift */; };
+		575992561CB1493500A82668 /* GarageClientConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575992551CB1493500A82668 /* GarageClientConfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		575992421CB13C9500A82668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5759924D1CB146FD00A82668 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
 		5759924E1CB146FD00A82668 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		575992531CB1491400A82668 /* GarageClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageClient.swift; sourceTree = "<group>"; };
+		575992551CB1493500A82668 /* GarageClientConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageClientConfiguration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 		5759922A1CB13C9400A82668 /* GarageClientSwift */ = {
 			isa = PBXGroup;
 			children = (
+				575992521CB1481F00A82668 /* Sources */,
 				5759922B1CB13C9400A82668 /* AppDelegate.swift */,
 				5759922D1CB13C9400A82668 /* ViewController.swift */,
 				5759922F1CB13C9400A82668 /* Main.storyboard */,
@@ -110,6 +115,16 @@
 				5759924E1CB146FD00A82668 /* Result.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		575992521CB1481F00A82668 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				575992531CB1491400A82668 /* GarageClient.swift */,
+				575992551CB1493500A82668 /* GarageClientConfiguration.swift */,
+			);
+			name = Sources;
+			path = ../Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,7 +263,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				575992561CB1493500A82668 /* GarageClientConfiguration.swift in Sources */,
 				5759922E1CB13C9400A82668 /* ViewController.swift in Sources */,
+				575992541CB1491400A82668 /* GarageClient.swift in Sources */,
 				5759922C1CB13C9400A82668 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
