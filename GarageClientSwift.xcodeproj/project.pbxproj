@@ -13,6 +13,8 @@
 		575992331CB13C9400A82668 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 575992321CB13C9400A82668 /* Assets.xcassets */; };
 		575992361CB13C9400A82668 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 575992341CB13C9400A82668 /* LaunchScreen.storyboard */; };
 		575992411CB13C9500A82668 /* GarageClientSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575992401CB13C9500A82668 /* GarageClientSwiftTests.swift */; };
+		5759924F1CB146FD00A82668 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5759924D1CB146FD00A82668 /* APIKit.framework */; };
+		575992501CB146FD00A82668 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5759924E1CB146FD00A82668 /* Result.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		5759923C1CB13C9500A82668 /* GarageClientSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GarageClientSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		575992401CB13C9500A82668 /* GarageClientSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageClientSwiftTests.swift; sourceTree = "<group>"; };
 		575992421CB13C9500A82668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5759924D1CB146FD00A82668 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
+		5759924E1CB146FD00A82668 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5759924F1CB146FD00A82668 /* APIKit.framework in Frameworks */,
+				575992501CB146FD00A82668 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +68,7 @@
 				5759922A1CB13C9400A82668 /* GarageClientSwift */,
 				5759923F1CB13C9500A82668 /* GarageClientSwiftTests */,
 				575992291CB13C9400A82668 /* Products */,
+				5759924C1CB146D900A82668 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +103,15 @@
 			path = GarageClientSwiftTests;
 			sourceTree = "<group>";
 		};
+		5759924C1CB146D900A82668 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5759924D1CB146FD00A82668 /* APIKit.framework */,
+				5759924E1CB146FD00A82668 /* Result.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -107,6 +123,7 @@
 				575992241CB13C9400A82668 /* Sources */,
 				575992251CB13C9400A82668 /* Frameworks */,
 				575992261CB13C9400A82668 /* Resources */,
+				575992511CB1471C00A82668 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -207,6 +224,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelif [ -e /opt/brew/bin/swiftlint ]; then\n    /opt/brew/bin/swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		575992511CB1471C00A82668 /* Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/APIKit.framework",
+			);
+			name = "Copy Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which carthage >/dev/null; then\n    carthage copy-frameworks\nelif [ -e /opt/brew/bin/carthage ]; then\n    /opt/brew/bin/carthage copy-frameworks\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -347,6 +380,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GarageClientSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -359,6 +396,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GarageClientSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
