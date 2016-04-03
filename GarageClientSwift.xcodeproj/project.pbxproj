@@ -103,6 +103,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 575992451CB13C9500A82668 /* Build configuration list for PBXNativeTarget "GarageClientSwift" */;
 			buildPhases = (
+				5759924B1CB13F2800A82668 /* Run SwiftLint */,
 				575992241CB13C9400A82668 /* Sources */,
 				575992251CB13C9400A82668 /* Frameworks */,
 				575992261CB13C9400A82668 /* Resources */,
@@ -191,6 +192,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5759924B1CB13F2800A82668 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelif [ -e /opt/brew/bin/swiftlint ]; then\n    /opt/brew/bin/swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		575992241CB13C9400A82668 /* Sources */ = {
@@ -392,6 +410,7 @@
 				575992471CB13C9500A82668 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		575992481CB13C9500A82668 /* Build configuration list for PBXNativeTarget "GarageClientSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -400,6 +419,7 @@
 				5759924A1CB13C9500A82668 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
