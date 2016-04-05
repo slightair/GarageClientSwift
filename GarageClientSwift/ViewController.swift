@@ -1,4 +1,6 @@
 import UIKit
+import APIKit
+import Himotoki
 
 struct Configuration: ClientConfigurationType {
     let endpoint: NSURL
@@ -7,17 +9,28 @@ struct Configuration: ClientConfigurationType {
 
 struct GetUserRequest: ClientRequestType {
     typealias Response = User
+
+    var method: HTTPMethod {
+        return .GET
+    }
+
+    var path: String {
+        return "/users/1"
+    }
 }
 
-//{
-//    "id":1,
-//    "name":"alice",
-//    "email":"alice@example.com",
-//    "_links":{"posts":{"href":"/v1/users/1/posts"}}
-//}
-struct User {
+struct User: Decodable {
+    let id: Int
     let name: String
     let email: String
+
+    static func decode(e: Extractor) throws -> User {
+        return User(
+            id: try e <| "id",
+            name: try e <| "name",
+            email: try e <| "email"
+        )
+    }
 }
 
 class ViewController: UIViewController {

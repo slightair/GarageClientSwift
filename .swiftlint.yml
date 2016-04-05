@@ -1,2 +1,4 @@
+disabled_rules:
+  - variable_name_min_length
 excluded:
   - Carthage
