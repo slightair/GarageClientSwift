@@ -17,6 +17,10 @@ struct GetUserRequest: ClientRequestType {
     var path: String {
         return "/users/1"
     }
+
+    func responseFromObject(object: AnyObject, urlResponse: NSHTTPURLResponse) -> Response? {
+        return nil
+    }
 }
 
 struct User: Decodable {

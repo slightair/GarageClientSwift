@@ -20,6 +20,7 @@
 		575992581CB2AEC000A82668 /* ClientRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575992571CB2AEC000A82668 /* ClientRequestType.swift */; };
 		5759925A1CB2B12200A82668 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575992591CB2B12200A82668 /* ClientError.swift */; };
 		5759925C1CB3F4F100A82668 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5759925B1CB3F4F100A82668 /* Himotoki.framework */; };
+		5759925E1CB3FF1600A82668 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5759925D1CB3FF1600A82668 /* RequestBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		575992571CB2AEC000A82668 /* ClientRequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientRequestType.swift; sourceTree = "<group>"; };
 		575992591CB2B12200A82668 /* ClientError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
 		5759925B1CB3F4F100A82668 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/iOS/Himotoki.framework; sourceTree = "<group>"; };
+		5759925D1CB3FF1600A82668 /* RequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				575992551CB1493500A82668 /* ClientConfiguration.swift */,
 				575992571CB2AEC000A82668 /* ClientRequestType.swift */,
 				575992591CB2B12200A82668 /* ClientError.swift */,
+				5759925D1CB3FF1600A82668 /* RequestBuilder.swift */,
 			);
 			name = Sources;
 			path = ../Sources;
@@ -274,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5759925E1CB3FF1600A82668 /* RequestBuilder.swift in Sources */,
 				575992581CB2AEC000A82668 /* ClientRequestType.swift in Sources */,
 				575992561CB1493500A82668 /* ClientConfiguration.swift in Sources */,
 				5759925A1CB2B12200A82668 /* ClientError.swift in Sources */,
