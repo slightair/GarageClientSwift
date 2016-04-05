@@ -19,6 +19,7 @@
 		575992561CB1493500A82668 /* ClientConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575992551CB1493500A82668 /* ClientConfiguration.swift */; };
 		575992581CB2AEC000A82668 /* ClientRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575992571CB2AEC000A82668 /* ClientRequestType.swift */; };
 		5759925A1CB2B12200A82668 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575992591CB2B12200A82668 /* ClientError.swift */; };
+		5759925C1CB3F4F100A82668 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5759925B1CB3F4F100A82668 /* Himotoki.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		575992551CB1493500A82668 /* ClientConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientConfiguration.swift; sourceTree = "<group>"; };
 		575992571CB2AEC000A82668 /* ClientRequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientRequestType.swift; sourceTree = "<group>"; };
 		575992591CB2B12200A82668 /* ClientError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientError.swift; sourceTree = "<group>"; };
+		5759925B1CB3F4F100A82668 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/iOS/Himotoki.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5759925C1CB3F4F100A82668 /* Himotoki.framework in Frameworks */,
 				5759924F1CB146FD00A82668 /* APIKit.framework in Frameworks */,
 				575992501CB146FD00A82668 /* Result.framework in Frameworks */,
 			);
@@ -115,6 +118,7 @@
 		5759924C1CB146D900A82668 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5759925B1CB3F4F100A82668 /* Himotoki.framework */,
 				5759924D1CB146FD00A82668 /* APIKit.framework */,
 				5759924E1CB146FD00A82668 /* Result.framework */,
 			);
@@ -254,6 +258,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/APIKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Himotoki.framework",
 			);
 			name = "Copy Frameworks";
 			outputPaths = (
