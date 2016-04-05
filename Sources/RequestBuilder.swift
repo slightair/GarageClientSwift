@@ -16,7 +16,7 @@ struct WrappedRequest<T: ClientRequestType>: RequestType {
     }
 
     var path: String {
-        return baseRequest.path
+        return [configuration.pathPrefix, baseRequest.path].joinWithSeparator("/")
     }
 
     func responseFromObject(object: AnyObject, URLResponse urlResponse: NSHTTPURLResponse) ->
