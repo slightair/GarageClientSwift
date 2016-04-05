@@ -1,6 +1,7 @@
 import Foundation
 import APIKit
 import Result
+import Himotoki
 
 class Client {
     let configuration: GarageConfigurationType
@@ -9,9 +10,10 @@ class Client {
         self.configuration = configuration
     }
 
-    func sendRequest<T: GarageRequestType>(request: T,
-                     handler: (Result<T.Response, GarageError>) -> Void = {result in}) ->
-        NSURLSessionDataTask? {
+    func sendRequest<T: GarageRequestType where T.Response: Decodable,
+        T.Response == T.Response.DecodedType>
+        (request: T, handler: (Result<T.Response, GarageError>) ->
+        Void = {result in}) -> NSURLSessionDataTask? {
             let wrappedRequest = RequestBuilder.buildRequest(request, configuration: configuration)
             return Session.sendRequest(wrappedRequest) { result in
                 switch result {

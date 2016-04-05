@@ -1,7 +1,9 @@
 import Foundation
 import APIKit
+import Himotoki
 
-struct WrappedRequest<T: GarageRequestType>: RequestType {
+struct WrappedRequest<T: GarageRequestType where T.Response: Decodable,
+    T.Response == T.Response.DecodedType>: RequestType {
     typealias Response = T.Response
 
     let baseRequest: T
@@ -11,21 +13,28 @@ struct WrappedRequest<T: GarageRequestType>: RequestType {
         return configuration.endpoint
     }
 
+    var HTTPHeaderFields: [String: String] {
+        var headers = configuration.headers
+        headers["Authorization"] = "Bearer \(configuration.accessToken)"
+        return headers
+    }
+
     var method: HTTPMethod {
         return baseRequest.method
     }
 
     var path: String {
-        return [configuration.pathPrefix, baseRequest.path].joinWithSeparator("/")
+        let pathPrefix = configuration.pathPrefix as NSString
+        return pathPrefix.stringByAppendingPathComponent(baseRequest.path)
     }
 
-    func responseFromObject(object: AnyObject, URLResponse urlResponse: NSHTTPURLResponse) ->
-        Response? {
-        return baseRequest.responseFromObject(object, urlResponse: urlResponse)
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+        return try? decodeValue(object)
     }
 }
 
-class RequestBuilder<T: GarageRequestType> {
+class RequestBuilder<T: GarageRequestType where T.Response: Decodable,
+    T.Response == T.Response.DecodedType> {
     static func buildRequest(baseRequest: T, configuration: GarageConfigurationType) ->
         WrappedRequest<T> {
             return WrappedRequest(baseRequest: baseRequest, configuration: configuration)

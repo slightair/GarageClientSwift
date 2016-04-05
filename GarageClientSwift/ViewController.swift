@@ -4,7 +4,7 @@ import Himotoki
 
 struct Configuration: GarageConfigurationType {
     let endpoint: NSURL
-    let accessToken: NSString
+    let accessToken: String
 }
 
 struct GetUserRequest: GarageRequestType {
@@ -16,10 +16,6 @@ struct GetUserRequest: GarageRequestType {
 
     var path: String {
         return "/users/1"
-    }
-
-    func responseFromObject(object: AnyObject, urlResponse: NSHTTPURLResponse) -> Response? {
-        return nil
     }
 }
 

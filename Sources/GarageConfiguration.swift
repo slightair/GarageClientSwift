@@ -2,6 +2,7 @@ import Foundation
 
 protocol GarageConfigurationType {
     var endpoint: NSURL { get }
+    var accessToken: String { get }
     var headers: [String: String] { get }
     var pathPrefix: String { get }
     var verbose: Bool { get }
