@@ -3,14 +3,14 @@ import APIKit
 import Result
 
 class Client {
-    let configuration: ClientConfigurationType
+    let configuration: GarageConfigurationType
 
-    init(configuration: ClientConfigurationType) {
+    init(configuration: GarageConfigurationType) {
         self.configuration = configuration
     }
 
-    func sendRequest<T: ClientRequestType>(request: T,
-                     handler: (Result<T.Response, ClientError>) -> Void = {result in}) ->
+    func sendRequest<T: GarageRequestType>(request: T,
+                     handler: (Result<T.Response, GarageError>) -> Void = {result in}) ->
         NSURLSessionDataTask? {
             let wrappedRequest = RequestBuilder.buildRequest(request, configuration: configuration)
             return Session.sendRequest(wrappedRequest) { result in
@@ -24,7 +24,7 @@ class Client {
             }
     }
 
-    func convertError(baseError: APIError) -> ClientError {
+    func convertError(baseError: APIError) -> GarageError {
         return .Raw(baseError)
     }
 }

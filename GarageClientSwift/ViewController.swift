@@ -2,12 +2,12 @@ import UIKit
 import APIKit
 import Himotoki
 
-struct Configuration: ClientConfigurationType {
+struct Configuration: GarageConfigurationType {
     let endpoint: NSURL
     let accessToken: NSString
 }
 
-struct GetUserRequest: ClientRequestType {
+struct GetUserRequest: GarageRequestType {
     typealias Response = User
 
     var method: HTTPMethod {

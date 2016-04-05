@@ -1,5 +1,5 @@
 import Foundation
 
-public enum ClientError: ErrorType {
+public enum GarageError: ErrorType {
     case Raw(ErrorType)
 }

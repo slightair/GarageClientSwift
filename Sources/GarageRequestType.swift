@@ -1,7 +1,7 @@
 import Foundation
 import APIKit
 
-protocol ClientRequestType {
+protocol GarageRequestType {
     associatedtype Response
 
     var method: HTTPMethod { get }

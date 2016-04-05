@@ -1,13 +1,13 @@
 import Foundation
 
-protocol ClientConfigurationType {
+protocol GarageConfigurationType {
     var endpoint: NSURL { get }
     var headers: [String: String] { get }
     var pathPrefix: String { get }
     var verbose: Bool { get }
 }
 
-extension ClientConfigurationType {
+extension GarageConfigurationType {
     var defaultUserAgent: String {
         let clientName = "GarageClientSwift"
 

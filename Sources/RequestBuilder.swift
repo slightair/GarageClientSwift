@@ -1,11 +1,11 @@
 import Foundation
 import APIKit
 
-struct WrappedRequest<T: ClientRequestType>: RequestType {
+struct WrappedRequest<T: GarageRequestType>: RequestType {
     typealias Response = T.Response
 
     let baseRequest: T
-    let configuration: ClientConfigurationType
+    let configuration: GarageConfigurationType
 
     var baseURL: NSURL {
         return configuration.endpoint
@@ -25,8 +25,8 @@ struct WrappedRequest<T: ClientRequestType>: RequestType {
     }
 }
 
-class RequestBuilder<T: ClientRequestType> {
-    static func buildRequest(baseRequest: T, configuration: ClientConfigurationType) ->
+class RequestBuilder<T: GarageRequestType> {
+    static func buildRequest(baseRequest: T, configuration: GarageConfigurationType) ->
         WrappedRequest<T> {
             return WrappedRequest(baseRequest: baseRequest, configuration: configuration)
     }
