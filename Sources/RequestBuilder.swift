@@ -13,12 +13,6 @@ struct WrappedRequest<T: GarageRequestType where T.Response: Decodable,
         return configuration.endpoint
     }
 
-    var HTTPHeaderFields: [String: String] {
-        var headers = configuration.headers
-        headers["Authorization"] = "Bearer \(configuration.accessToken)"
-        return headers
-    }
-
     var method: HTTPMethod {
         return baseRequest.method
     }

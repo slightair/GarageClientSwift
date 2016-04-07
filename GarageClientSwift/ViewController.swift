@@ -34,19 +34,22 @@ struct User: Decodable {
 }
 
 class ViewController: UIViewController {
+    let garageClient: Client
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    required init?(coder aDecoder: NSCoder) {
         let configuration = Configuration(
             endpoint: NSURL(string: "http://localhost:3000")!,
             accessToken: ""
         )
+        garageClient = Client(configuration: configuration)
 
-        let client = Client(configuration: configuration)
-        let request = GetUserRequest()
+        super.init(coder: aDecoder)
+    }
 
-        client.sendRequest(request) { result in
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        garageClient.sendRequest(GetUserRequest()) { result in
             switch result {
             case .Success(let user):
                 print(user.name)
