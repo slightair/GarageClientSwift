@@ -36,13 +36,26 @@ class GarageClient {
                 case .Success(let result):
                     handler(Result.Success(result))
                 case .Failure(let error):
-                    let convertedError = self.convertError(error)
-                    handler(Result.Failure(convertedError))
+                    handler(Result.Failure(GarageClient.GarageErrorFromAPIError(error)))
                 }
             }
     }
 
-    func convertError(baseError: APIError) -> GarageError {
-        return .Raw(baseError)
+    static func GarageErrorFromAPIError(baseError: APIError) -> GarageError {
+        switch baseError {
+        case .UnacceptableStatusCode(let statusCode, let error as NSError):
+            guard let urlResponse = error.userInfo["URLResponse"] as? NSHTTPURLResponse else {
+                return .Raw(baseError)
+            }
+
+            switch statusCode {
+            case 400:
+                return .BadRequest(urlResponse)
+            default:
+                return .Raw(baseError)
+            }
+        default:
+            return .Raw(baseError)
+        }
     }
 }

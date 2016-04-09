@@ -12,7 +12,7 @@
 		575992311CB13C9400A82668 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5759922F1CB13C9400A82668 /* Main.storyboard */; };
 		575992331CB13C9400A82668 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 575992321CB13C9400A82668 /* Assets.xcassets */; };
 		575992361CB13C9400A82668 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 575992341CB13C9400A82668 /* LaunchScreen.storyboard */; };
-		575992411CB13C9500A82668 /* GarageClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575992401CB13C9500A82668 /* GarageClientTests.swift */; };
+		575992411CB13C9500A82668 /* GarageErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575992401CB13C9500A82668 /* GarageErrorTests.swift */; };
 		5759924F1CB146FD00A82668 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5759924D1CB146FD00A82668 /* APIKit.framework */; };
 		575992501CB146FD00A82668 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5759924E1CB146FD00A82668 /* Result.framework */; };
 		575992541CB1491400A82668 /* GarageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575992531CB1491400A82668 /* GarageClient.swift */; };
@@ -21,6 +21,7 @@
 		5759925A1CB2B12200A82668 /* GarageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575992591CB2B12200A82668 /* GarageError.swift */; };
 		5759925C1CB3F4F100A82668 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5759925B1CB3F4F100A82668 /* Himotoki.framework */; };
 		5759925E1CB3FF1600A82668 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5759925D1CB3FF1600A82668 /* RequestBuilder.swift */; };
+		575992611CB8ECE100A82668 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5759924D1CB146FD00A82668 /* APIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +43,7 @@
 		575992351CB13C9400A82668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		575992371CB13C9500A82668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5759923C1CB13C9500A82668 /* GarageClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GarageClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		575992401CB13C9500A82668 /* GarageClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageClientTests.swift; sourceTree = "<group>"; };
+		575992401CB13C9500A82668 /* GarageErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageErrorTests.swift; sourceTree = "<group>"; };
 		575992421CB13C9500A82668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5759924D1CB146FD00A82668 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
 		5759924E1CB146FD00A82668 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -69,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				575992611CB8ECE100A82668 /* APIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +113,7 @@
 		5759923F1CB13C9500A82668 /* GarageClientTests */ = {
 			isa = PBXGroup;
 			children = (
-				575992401CB13C9500A82668 /* GarageClientTests.swift */,
+				575992401CB13C9500A82668 /* GarageErrorTests.swift */,
 				575992421CB13C9500A82668 /* Info.plist */,
 			);
 			path = GarageClientTests;
@@ -291,7 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				575992411CB13C9500A82668 /* GarageClientTests.swift in Sources */,
+				575992411CB13C9500A82668 /* GarageErrorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +448,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GarageClientTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.clv.GarageClientTests;
@@ -458,6 +464,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GarageClientTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.clv.GarageClientTests;
