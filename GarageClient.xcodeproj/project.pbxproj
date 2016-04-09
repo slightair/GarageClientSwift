@@ -12,7 +12,7 @@
 		575992311CB13C9400A82668 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5759922F1CB13C9400A82668 /* Main.storyboard */; };
 		575992331CB13C9400A82668 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 575992321CB13C9400A82668 /* Assets.xcassets */; };
 		575992361CB13C9400A82668 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 575992341CB13C9400A82668 /* LaunchScreen.storyboard */; };
-		575992411CB13C9500A82668 /* GarageClientSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575992401CB13C9500A82668 /* GarageClientSwiftTests.swift */; };
+		575992411CB13C9500A82668 /* GarageClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575992401CB13C9500A82668 /* GarageClientTests.swift */; };
 		5759924F1CB146FD00A82668 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5759924D1CB146FD00A82668 /* APIKit.framework */; };
 		575992501CB146FD00A82668 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5759924E1CB146FD00A82668 /* Result.framework */; };
 		575992541CB1491400A82668 /* GarageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575992531CB1491400A82668 /* GarageClient.swift */; };
@@ -24,25 +24,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5759923D1CB13C9500A82668 /* PBXContainerItemProxy */ = {
+		5759925F1CB8E94500A82668 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 575992201CB13C9400A82668 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 575992271CB13C9400A82668;
-			remoteInfo = GarageClientSwift;
+			remoteInfo = GarageClient;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		575992281CB13C9400A82668 /* GarageClientSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GarageClientSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		575992281CB13C9400A82668 /* GarageClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GarageClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5759922B1CB13C9400A82668 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5759922D1CB13C9400A82668 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		575992301CB13C9400A82668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		575992321CB13C9400A82668 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		575992351CB13C9400A82668 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		575992371CB13C9500A82668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5759923C1CB13C9500A82668 /* GarageClientSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GarageClientSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		575992401CB13C9500A82668 /* GarageClientSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageClientSwiftTests.swift; sourceTree = "<group>"; };
+		5759923C1CB13C9500A82668 /* GarageClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GarageClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		575992401CB13C9500A82668 /* GarageClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarageClientTests.swift; sourceTree = "<group>"; };
 		575992421CB13C9500A82668 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5759924D1CB146FD00A82668 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
 		5759924E1CB146FD00A82668 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -78,8 +78,8 @@
 		5759921F1CB13C9400A82668 = {
 			isa = PBXGroup;
 			children = (
-				5759922A1CB13C9400A82668 /* GarageClientSwift */,
-				5759923F1CB13C9500A82668 /* GarageClientSwiftTests */,
+				5759922A1CB13C9400A82668 /* GarageClient */,
+				5759923F1CB13C9500A82668 /* GarageClientTests */,
 				575992291CB13C9400A82668 /* Products */,
 				5759924C1CB146D900A82668 /* Frameworks */,
 			);
@@ -88,13 +88,13 @@
 		575992291CB13C9400A82668 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				575992281CB13C9400A82668 /* GarageClientSwift.app */,
-				5759923C1CB13C9500A82668 /* GarageClientSwiftTests.xctest */,
+				575992281CB13C9400A82668 /* GarageClient.app */,
+				5759923C1CB13C9500A82668 /* GarageClientTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5759922A1CB13C9400A82668 /* GarageClientSwift */ = {
+		5759922A1CB13C9400A82668 /* GarageClient */ = {
 			isa = PBXGroup;
 			children = (
 				575992521CB1481F00A82668 /* Sources */,
@@ -105,16 +105,16 @@
 				575992341CB13C9400A82668 /* LaunchScreen.storyboard */,
 				575992371CB13C9500A82668 /* Info.plist */,
 			);
-			path = GarageClientSwift;
+			path = GarageClient;
 			sourceTree = "<group>";
 		};
-		5759923F1CB13C9500A82668 /* GarageClientSwiftTests */ = {
+		5759923F1CB13C9500A82668 /* GarageClientTests */ = {
 			isa = PBXGroup;
 			children = (
-				575992401CB13C9500A82668 /* GarageClientSwiftTests.swift */,
+				575992401CB13C9500A82668 /* GarageClientTests.swift */,
 				575992421CB13C9500A82668 /* Info.plist */,
 			);
-			path = GarageClientSwiftTests;
+			path = GarageClientTests;
 			sourceTree = "<group>";
 		};
 		5759924C1CB146D900A82668 /* Frameworks */ = {
@@ -143,9 +143,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		575992271CB13C9400A82668 /* GarageClientSwift */ = {
+		575992271CB13C9400A82668 /* GarageClient */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 575992451CB13C9500A82668 /* Build configuration list for PBXNativeTarget "GarageClientSwift" */;
+			buildConfigurationList = 575992451CB13C9500A82668 /* Build configuration list for PBXNativeTarget "GarageClient" */;
 			buildPhases = (
 				5759924B1CB13F2800A82668 /* Run SwiftLint */,
 				575992241CB13C9400A82668 /* Sources */,
@@ -157,14 +157,14 @@
 			);
 			dependencies = (
 			);
-			name = GarageClientSwift;
-			productName = GarageClientSwift;
-			productReference = 575992281CB13C9400A82668 /* GarageClientSwift.app */;
+			name = GarageClient;
+			productName = GarageClient;
+			productReference = 575992281CB13C9400A82668 /* GarageClient.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5759923B1CB13C9500A82668 /* GarageClientSwiftTests */ = {
+		5759923B1CB13C9500A82668 /* GarageClientTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 575992481CB13C9500A82668 /* Build configuration list for PBXNativeTarget "GarageClientSwiftTests" */;
+			buildConfigurationList = 575992481CB13C9500A82668 /* Build configuration list for PBXNativeTarget "GarageClientTests" */;
 			buildPhases = (
 				575992381CB13C9500A82668 /* Sources */,
 				575992391CB13C9500A82668 /* Frameworks */,
@@ -173,11 +173,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				5759923E1CB13C9500A82668 /* PBXTargetDependency */,
+				575992601CB8E94500A82668 /* PBXTargetDependency */,
 			);
-			name = GarageClientSwiftTests;
-			productName = GarageClientSwiftTests;
-			productReference = 5759923C1CB13C9500A82668 /* GarageClientSwiftTests.xctest */;
+			name = GarageClientTests;
+			productName = GarageClientTests;
+			productReference = 5759923C1CB13C9500A82668 /* GarageClientTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -199,7 +199,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 575992231CB13C9400A82668 /* Build configuration list for PBXProject "GarageClientSwift" */;
+			buildConfigurationList = 575992231CB13C9400A82668 /* Build configuration list for PBXProject "GarageClient" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -212,8 +212,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				575992271CB13C9400A82668 /* GarageClientSwift */,
-				5759923B1CB13C9500A82668 /* GarageClientSwiftTests */,
+				575992271CB13C9400A82668 /* GarageClient */,
+				5759923B1CB13C9500A82668 /* GarageClientTests */,
 			);
 		};
 /* End PBXProject section */
@@ -291,17 +291,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				575992411CB13C9500A82668 /* GarageClientSwiftTests.swift in Sources */,
+				575992411CB13C9500A82668 /* GarageClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5759923E1CB13C9500A82668 /* PBXTargetDependency */ = {
+		575992601CB8E94500A82668 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 575992271CB13C9400A82668 /* GarageClientSwift */;
-			targetProxy = 5759923D1CB13C9500A82668 /* PBXContainerItemProxy */;
+			target = 575992271CB13C9400A82668 /* GarageClient */;
+			targetProxy = 5759925F1CB8E94500A82668 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -418,11 +418,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = GarageClientSwift/Info.plist;
+				INFOPLIST_FILE = GarageClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cc.clv.GarageClientSwift;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.clv.GarageClient;
+				PRODUCT_NAME = GarageClient;
 			};
 			name = Debug;
 		};
@@ -434,11 +434,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = GarageClientSwift/Info.plist;
+				INFOPLIST_FILE = GarageClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cc.clv.GarageClientSwift;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.clv.GarageClient;
+				PRODUCT_NAME = GarageClient;
 			};
 			name = Release;
 		};
@@ -446,11 +446,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = GarageClientSwiftTests/Info.plist;
+				INFOPLIST_FILE = GarageClientTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cc.clv.GarageClientSwiftTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GarageClientSwift.app/GarageClientSwift";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.clv.GarageClientTests;
+				PRODUCT_NAME = GarageClientTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GarageClient.app/GarageClient";
 			};
 			name = Debug;
 		};
@@ -458,18 +458,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = GarageClientSwiftTests/Info.plist;
+				INFOPLIST_FILE = GarageClientTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cc.clv.GarageClientSwiftTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GarageClientSwift.app/GarageClientSwift";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.clv.GarageClientTests;
+				PRODUCT_NAME = GarageClientTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GarageClient.app/GarageClient";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		575992231CB13C9400A82668 /* Build configuration list for PBXProject "GarageClientSwift" */ = {
+		575992231CB13C9400A82668 /* Build configuration list for PBXProject "GarageClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				575992431CB13C9500A82668 /* Debug */,
@@ -478,7 +478,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		575992451CB13C9500A82668 /* Build configuration list for PBXNativeTarget "GarageClientSwift" */ = {
+		575992451CB13C9500A82668 /* Build configuration list for PBXNativeTarget "GarageClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				575992461CB13C9500A82668 /* Debug */,
@@ -487,7 +487,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		575992481CB13C9500A82668 /* Build configuration list for PBXNativeTarget "GarageClientSwiftTests" */ = {
+		575992481CB13C9500A82668 /* Build configuration list for PBXNativeTarget "GarageClientTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				575992491CB13C9500A82668 /* Debug */,

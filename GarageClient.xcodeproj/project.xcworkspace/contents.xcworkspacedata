@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:GarageClientSwift.xcodeproj">
+      location = "self:/Users/slightair/.ghq/github.com/slightair/GarageClientSwift/GarageClient.xcodeproj">
    </FileRef>
 </Workspace>
