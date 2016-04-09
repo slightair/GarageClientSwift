@@ -34,14 +34,14 @@ struct User: Decodable {
 }
 
 class ViewController: UIViewController {
-    let garageClient: Client
+    let garageClient: GarageClient
 
     required init?(coder aDecoder: NSCoder) {
         let configuration = Configuration(
             endpoint: NSURL(string: "http://localhost:3000")!,
             accessToken: ""
         )
-        garageClient = Client(configuration: configuration)
+        garageClient = GarageClient(configuration: configuration)
 
         super.init(coder: aDecoder)
     }

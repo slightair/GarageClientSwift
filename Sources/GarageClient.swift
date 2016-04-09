@@ -3,7 +3,7 @@ import APIKit
 import Result
 import Himotoki
 
-class Client {
+class GarageClient {
     let configuration: GarageConfigurationType
     var session: Session!
 
