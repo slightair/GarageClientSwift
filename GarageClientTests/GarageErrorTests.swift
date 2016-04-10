@@ -29,7 +29,150 @@ class GarageErrorTests: XCTestCase {
         case .BadRequest(let errorResponse):
             XCTAssertEqual(response, errorResponse)
         default:
-            XCTFail()
+            XCTFail("Unexpected error type \(garageError)")
+        }
+    }
+
+    func testGarageErrorFromAPIErrorUnauthorized() {
+        let response = HTTPURLResponse(statusCode: 401)
+        let APIError = UnacceptableStatusCodeError(response: response)
+        let garageError = GarageClient.GarageErrorFromAPIError(APIError)
+
+        switch garageError {
+        case .Unauthorized(let errorResponse):
+            XCTAssertEqual(response, errorResponse)
+        default:
+            XCTFail("Unexpected error type \(garageError)")
+        }
+    }
+
+    func testGarageErrorFromAPIErrorForbidden() {
+        let response = HTTPURLResponse(statusCode: 403)
+        let APIError = UnacceptableStatusCodeError(response: response)
+        let garageError = GarageClient.GarageErrorFromAPIError(APIError)
+
+        switch garageError {
+        case .Forbidden(let errorResponse):
+            XCTAssertEqual(response, errorResponse)
+        default:
+            XCTFail("Unexpected error type \(garageError)")
+        }
+    }
+
+    func testGarageErrorFromAPIErrorNotFound() {
+        let response = HTTPURLResponse(statusCode: 404)
+        let APIError = UnacceptableStatusCodeError(response: response)
+        let garageError = GarageClient.GarageErrorFromAPIError(APIError)
+
+        switch garageError {
+        case .NotFound(let errorResponse):
+            XCTAssertEqual(response, errorResponse)
+        default:
+            XCTFail("Unexpected error type \(garageError)")
+        }
+    }
+
+    func testGarageErrorFromAPIErrorNotAcceptable() {
+        let response = HTTPURLResponse(statusCode: 406)
+        let APIError = UnacceptableStatusCodeError(response: response)
+        let garageError = GarageClient.GarageErrorFromAPIError(APIError)
+
+        switch garageError {
+        case .NotAcceptable(let errorResponse):
+            XCTAssertEqual(response, errorResponse)
+        default:
+            XCTFail("Unexpected error type \(garageError)")
+        }
+    }
+
+    func testGarageErrorFromAPIErrorConflict() {
+        let response = HTTPURLResponse(statusCode: 409)
+        let APIError = UnacceptableStatusCodeError(response: response)
+        let garageError = GarageClient.GarageErrorFromAPIError(APIError)
+
+        switch garageError {
+        case .Conflict(let errorResponse):
+            XCTAssertEqual(response, errorResponse)
+        default:
+            XCTFail("Unexpected error type \(garageError)")
+        }
+    }
+
+    func testGarageErrorFromAPIErrorUnsupportedMediaType() {
+        let response = HTTPURLResponse(statusCode: 415)
+        let APIError = UnacceptableStatusCodeError(response: response)
+        let garageError = GarageClient.GarageErrorFromAPIError(APIError)
+
+        switch garageError {
+        case .UnsupportedMediaType(let errorResponse):
+            XCTAssertEqual(response, errorResponse)
+        default:
+            XCTFail("Unexpected error type \(garageError)")
+        }
+    }
+
+    func testGarageErrorFromAPIErrorUnprocessableEntity() {
+        let response = HTTPURLResponse(statusCode: 422)
+        let APIError = UnacceptableStatusCodeError(response: response)
+        let garageError = GarageClient.GarageErrorFromAPIError(APIError)
+
+        switch garageError {
+        case .UnprocessableEntity(let errorResponse):
+            XCTAssertEqual(response, errorResponse)
+        default:
+            XCTFail("Unexpected error type \(garageError)")
+        }
+    }
+
+    func testGarageErrorFromAPIErrorInternalServerError() {
+        let response = HTTPURLResponse(statusCode: 500)
+        let APIError = UnacceptableStatusCodeError(response: response)
+        let garageError = GarageClient.GarageErrorFromAPIError(APIError)
+
+        switch garageError {
+        case .InternalServerError(let errorResponse):
+            XCTAssertEqual(response, errorResponse)
+        default:
+            XCTFail("Unexpected error type \(garageError)")
+        }
+    }
+
+    func testGarageErrorFromAPIErrorServiceUnavailable() {
+        let response = HTTPURLResponse(statusCode: 503)
+        let APIError = UnacceptableStatusCodeError(response: response)
+        let garageError = GarageClient.GarageErrorFromAPIError(APIError)
+
+        switch garageError {
+        case .ServiceUnavailable(let errorResponse):
+            XCTAssertEqual(response, errorResponse)
+        default:
+            XCTFail("Unexpected error type \(garageError)")
+        }
+    }
+
+    func testGarageErrorFromAPIErrorClientError() {
+        let response = HTTPURLResponse(statusCode: 499)
+        let APIError = UnacceptableStatusCodeError(response: response)
+        let garageError = GarageClient.GarageErrorFromAPIError(APIError)
+
+        switch garageError {
+        case .ClientError(let errorResponse):
+            XCTAssertEqual(response, errorResponse)
+        default:
+            XCTFail("Unexpected error type \(garageError)")
+        }
+    }
+
+    func testGarageErrorFromAPIErrorServerError() {
+        let response = HTTPURLResponse(statusCode: 599)
+        let APIError = UnacceptableStatusCodeError(response: response)
+        let garageError = GarageClient.GarageErrorFromAPIError(APIError)
+
+        switch garageError {
+        case .ServerError(let errorResponse):
+            XCTAssertEqual(response, errorResponse)
+        default:
+            XCTFail("Unexpected error type \(garageError)")
         }
     }
 }

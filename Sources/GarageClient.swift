@@ -41,21 +41,52 @@ class GarageClient {
             }
     }
 
+    // swiftlint:disable:next function_body_length
     static func GarageErrorFromAPIError(baseError: APIError) -> GarageError {
         switch baseError {
+        case .ConnectionError(let error):
+            return .ConnectionError(error)
+        case .InvalidBaseURL, .ConfigurationError:
+            return .ConfigurationError(baseError)
+        case .RequestBodySerializationError:
+            return .RequestError(baseError)
+        case .ResponseBodyDeserializationError, .InvalidResponseStructure, .NotHTTPURLResponse:
+            return .InvalidResponse(baseError)
         case .UnacceptableStatusCode(let statusCode, let error as NSError):
             guard let urlResponse = error.userInfo["URLResponse"] as? NSHTTPURLResponse else {
-                return .Raw(baseError)
+                return .Unknown(baseError)
             }
 
             switch statusCode {
             case 400:
                 return .BadRequest(urlResponse)
+            case 401:
+                return .Unauthorized(urlResponse)
+            case 403:
+                return .Forbidden(urlResponse)
+            case 404:
+                return .NotFound(urlResponse)
+            case 406:
+                return .NotAcceptable(urlResponse)
+            case 409:
+                return .Conflict(urlResponse)
+            case 415:
+                return .UnsupportedMediaType(urlResponse)
+            case 422:
+                return .UnprocessableEntity(urlResponse)
+            case 500:
+                return .InternalServerError(urlResponse)
+            case 503:
+                return .ServiceUnavailable(urlResponse)
+            case 400..<500:
+                return .ClientError(urlResponse)
+            case 500..<600:
+                return .ServerError(urlResponse)
             default:
-                return .Raw(baseError)
+                return .Unknown(baseError)
             }
         default:
-            return .Raw(baseError)
+            return .Unknown(baseError)
         }
     }
 }
