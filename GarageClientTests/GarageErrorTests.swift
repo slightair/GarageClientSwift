@@ -25,6 +25,11 @@ class GarageErrorTests: XCTestCase {
         let APIError = UnacceptableStatusCodeError(response: response)
         let garageError = GarageClient.GarageErrorFromAPIError(APIError)
 
-        XCTAssert(garageError == GarageError.BadRequest(response))
+        switch garageError {
+        case .BadRequest(let errorResponse):
+            XCTAssertEqual(response, errorResponse)
+        default:
+            XCTFail()
+        }
     }
 }
