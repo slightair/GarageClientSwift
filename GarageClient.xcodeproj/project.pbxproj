@@ -24,6 +24,7 @@
 		575992611CB8ECE100A82668 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5759924D1CB146FD00A82668 /* APIKit.framework */; };
 		57D07F941CBBE162001A757D /* GarageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D07F931CBBE162001A757D /* GarageResponse.swift */; };
 		57D07F961CBBE405001A757D /* LinkHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D07F951CBBE405001A757D /* LinkHeader.swift */; };
+		7FE638E31CBCA79A00E70E08 /* LinkHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE638E21CBCA79A00E70E08 /* LinkHeaderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		5759925D1CB3FF1600A82668 /* RequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
 		57D07F931CBBE162001A757D /* GarageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageResponse.swift; sourceTree = "<group>"; };
 		57D07F951CBBE405001A757D /* LinkHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkHeader.swift; sourceTree = "<group>"; };
+		7FE638E21CBCA79A00E70E08 /* LinkHeaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkHeaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			children = (
 				575992401CB13C9500A82668 /* GarageErrorTests.swift */,
 				575992421CB13C9500A82668 /* Info.plist */,
+				7FE638E21CBCA79A00E70E08 /* LinkHeaderTests.swift */,
 			);
 			path = GarageClientTests;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FE638E31CBCA79A00E70E08 /* LinkHeaderTests.swift in Sources */,
 				575992411CB13C9500A82668 /* GarageErrorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

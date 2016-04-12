@@ -27,4 +27,8 @@ struct LinkHeader {
     var hasLastPage: Bool {
         return last != nil
     }
+
+    init?(string: String) {
+        return nil
+    }
 }
