@@ -8,6 +8,11 @@ class LinkHeaderTests: XCTestCase {
         XCTAssertNil(linkHeader)
     }
 
+    func testParseLinkHeaderInvalid() {
+        let linkHeader = LinkHeader(string: ", 1;, , ; page=; ")
+        XCTAssertNil(linkHeader)
+    }
+
     func testParseLinkHeaderHasFirst() {
         // swiftlint:disable:next line_length
         let linkHeaderString = "</v1/users?page=1&per_page=1>; rel=\"first\"; page=\"1\", </v1/users?page=3&per_page=1>; rel=\"prev\"; page=\"3\""
@@ -28,7 +33,7 @@ class LinkHeaderTests: XCTestCase {
         let linkHeaderString = "</v1/users?page=1&per_page=1>; rel=\"first\"; page=\"1\", </v1/users?page=3&per_page=1>; rel=\"prev\"; page=\"3\""
         let linkHeader = LinkHeader(string: linkHeaderString)
 
-        guard let prev = linkHeader?.last else {
+        guard let prev = linkHeader?.prev else {
             XCTFail("should have prev element")
             return
         }
@@ -43,7 +48,7 @@ class LinkHeaderTests: XCTestCase {
         let linkHeaderString = "</v1/users?page=2&per_page=1>; rel=\"next\"; page=\"2\", </v1/users?page=4&per_page=1>; rel=\"last\"; page=\"4\""
         let linkHeader = LinkHeader(string: linkHeaderString)
 
-        guard let next = linkHeader?.last else {
+        guard let next = linkHeader?.next else {
             XCTFail("should have next element")
             return
         }
