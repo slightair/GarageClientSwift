@@ -8,7 +8,7 @@ struct Configuration: GarageConfigurationType {
 }
 
 struct GetUserRequest: GarageRequestType {
-    typealias Response = User
+    typealias Resource = User
 
     var method: HTTPMethod {
         return .GET
@@ -51,8 +51,11 @@ class ViewController: UIViewController {
 
         garageClient.sendRequest(GetUserRequest()) { result in
             switch result {
-            case .Success(let user):
-                print(user.name)
+            case .Success(let response):
+                print(response)
+
+                let user = response.resource
+                print(user)
             case .Failure(let error):
                 print(error)
             }

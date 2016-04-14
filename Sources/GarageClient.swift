@@ -26,9 +26,9 @@ class GarageClient {
         return sessionConfiguration
     }
 
-    func sendRequest<T: GarageRequestType where T.Response: Decodable,
-        T.Response == T.Response.DecodedType>
-        (request: T, handler: (Result<T.Response, GarageError>) ->
+    func sendRequest<T: GarageRequestType where T.Resource: Decodable,
+        T.Resource == T.Resource.DecodedType>
+        (request: T, handler: (Result<GarageResponse<T.Resource>, GarageError>) ->
         Void = {result in}) -> NSURLSessionDataTask? {
             let wrappedRequest = RequestBuilder.buildRequest(request, configuration: configuration)
             return session.sendRequest(wrappedRequest) { result in

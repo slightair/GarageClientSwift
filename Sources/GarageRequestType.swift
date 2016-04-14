@@ -2,7 +2,7 @@ import Foundation
 import APIKit
 
 protocol GarageRequestType {
-    associatedtype Response
+    associatedtype Resource
 
     var method: HTTPMethod { get }
     var path: String { get }

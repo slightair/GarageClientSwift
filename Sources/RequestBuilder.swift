@@ -2,9 +2,9 @@ import Foundation
 import APIKit
 import Himotoki
 
-struct WrappedRequest<T: GarageRequestType where T.Response: Decodable,
-    T.Response == T.Response.DecodedType>: RequestType {
-    typealias Response = T.Response
+struct WrappedRequest<T: GarageRequestType where T.Resource: Decodable,
+    T.Resource == T.Resource.DecodedType>: RequestType {
+    typealias Response = GarageResponse<T.Resource>
 
     let baseRequest: T
     let configuration: GarageConfigurationType
@@ -23,12 +23,30 @@ struct WrappedRequest<T: GarageRequestType where T.Response: Decodable,
     }
 
     func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
-        return try? decodeValue(object)
+        guard let resource: T.Resource = try? decodeValue(object) else {
+            return nil
+        }
+
+        let totalCount: Int?
+        if let totalCountString = URLResponse.allHeaderFields["X-List-Totalcount"] as? String {
+            totalCount = Int(totalCountString)
+        } else {
+            totalCount = nil
+        }
+
+        let linkHeader: LinkHeader?
+        if let linkHeaderString = URLResponse.allHeaderFields["Link"] as? String {
+            linkHeader = LinkHeader(string: linkHeaderString)
+        } else {
+            linkHeader = nil
+        }
+
+        return GarageResponse(resource: resource, totalCount: totalCount, linkHeader: linkHeader)
     }
 }
 
-class RequestBuilder<T: GarageRequestType where T.Response: Decodable,
-    T.Response == T.Response.DecodedType> {
+class RequestBuilder<T: GarageRequestType where T.Resource: Decodable,
+    T.Resource == T.Resource.DecodedType> {
     static func buildRequest(baseRequest: T, configuration: GarageConfigurationType) ->
         WrappedRequest<T> {
             return WrappedRequest(baseRequest: baseRequest, configuration: configuration)
