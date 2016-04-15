@@ -26,19 +26,32 @@ class GarageClient {
         return sessionConfiguration
     }
 
-    func sendRequest<T: GarageRequestType where T.Resource: Decodable,
-        T.Resource == T.Resource.DecodedType>
+    func sendRequest<T: GarageRequestType, D: Decodable where T.Resource == D, D == D.DecodedType>
         (request: T, handler: (Result<GarageResponse<T.Resource>, GarageError>) ->
         Void = {result in}) -> NSURLSessionDataTask? {
-            let wrappedRequest = RequestBuilder.buildRequest(request, configuration: configuration)
-            return session.sendRequest(wrappedRequest) { result in
-                switch result {
-                case .Success(let result):
-                    handler(Result.Success(result))
-                case .Failure(let error):
-                    handler(Result.Failure(GarageClient.GarageErrorFromAPIError(error)))
-                }
+        let wrappedRequest = RequestBuilder.buildRequest(request, configuration: configuration)
+        return session.sendRequest(wrappedRequest) { result in
+            switch result {
+            case .Success(let result):
+                handler(Result.Success(result))
+            case .Failure(let error):
+                handler(Result.Failure(GarageClient.GarageErrorFromAPIError(error)))
             }
+        }
+    }
+
+    func sendRequest<T: GarageRequestType, D: Decodable where T.Resource == [D], D == D.DecodedType>
+        (request: T, handler: (Result<GarageResponse<T.Resource>, GarageError>) ->
+        Void = {result in}) -> NSURLSessionDataTask? {
+        let wrappedRequest = RequestBuilder.buildRequest(request, configuration: configuration)
+        return session.sendRequest(wrappedRequest) { result in
+            switch result {
+            case .Success(let result):
+                handler(Result.Success(result))
+            case .Failure(let error):
+                handler(Result.Failure(GarageClient.GarageErrorFromAPIError(error)))
+            }
+        }
     }
 
     // swiftlint:disable:next function_body_length

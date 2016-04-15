@@ -19,6 +19,18 @@ struct GetUserRequest: GarageRequestType {
     }
 }
 
+struct GetUsersRequest: GarageRequestType {
+    typealias Resource = [User]
+
+    var method: HTTPMethod {
+        return .GET
+    }
+
+    var path: String {
+        return "/users"
+    }
+}
+
 struct User: Decodable {
     let id: Int
     let name: String
@@ -56,6 +68,20 @@ class ViewController: UIViewController {
 
                 let user = response.resource
                 print(user)
+            case .Failure(let error):
+                print(error)
+            }
+        }
+
+        garageClient.sendRequest(GetUsersRequest()) { result in
+            switch result {
+            case .Success(let response):
+                print(response)
+
+                let users = response.resource
+                for user in users {
+                    print(user)
+                }
             case .Failure(let error):
                 print(error)
             }
