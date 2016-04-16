@@ -2,8 +2,9 @@ import Foundation
 import APIKit
 import Himotoki
 
-struct WrappedRequest<T: GarageRequestType>: RequestType {
-//    typealias Response = GarageResponse<T.Resource>
+struct WrappedRequest<T: GarageRequestType where T.Resource: Decodable,
+    T.Resource == T.Resource.DecodedType>: RequestType {
+    typealias Response = GarageResponse<T.Resource>
 
     let baseRequest: T
     let configuration: GarageConfigurationType
@@ -21,28 +22,8 @@ struct WrappedRequest<T: GarageRequestType>: RequestType {
         return pathPrefix.stringByAppendingPathComponent(baseRequest.path)
     }
 
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) ->
-        GarageResponse<T.Resource>? {
-        return nil
-    }
-
-    func responseFromObject<T: GarageRequestType, D: Decodable where T.Resource == D,
-        D == D.DecodedType>
-        (object: AnyObject, URLResponse: NSHTTPURLResponse) -> GarageResponse<T.Resource>? {
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
         guard let resource: T.Resource = try? decodeValue(object) else {
-            return nil
-        }
-
-        let parameters = headerParameters(URLResponse)
-        return GarageResponse(resource: resource,
-                              totalCount: parameters.totalCount,
-                              linkHeader: parameters.linkHeader)
-    }
-
-    func responseFromObject<T: GarageRequestType, D: Decodable where T.Resource == [D],
-        D == D.DecodedType>
-        (object: AnyObject, URLResponse: NSHTTPURLResponse) -> GarageResponse<T.Resource>? {
-        guard let resource: T.Resource = try? decodeArray(object) else {
             return nil
         }
 
@@ -72,17 +53,9 @@ struct WrappedRequest<T: GarageRequestType>: RequestType {
     }
 }
 
-class RequestBuilder {
-    static func buildRequest<T: GarageRequestType, D: Decodable
-        where T.Resource == D, D == D.DecodedType>
-        (baseRequest: T, configuration: GarageConfigurationType) ->
-        WrappedRequest<T> {
-        return WrappedRequest(baseRequest: baseRequest, configuration: configuration)
-    }
-
-    static func buildRequest<T: GarageRequestType, D: Decodable
-        where T.Resource == [D], D == D.DecodedType>
-        (baseRequest: T, configuration: GarageConfigurationType) ->
+class RequestBuilder<T: GarageRequestType where T.Resource: Decodable,
+    T.Resource == T.Resource.DecodedType> {
+    static func buildRequest(baseRequest: T, configuration: GarageConfigurationType) ->
         WrappedRequest<T> {
         return WrappedRequest(baseRequest: baseRequest, configuration: configuration)
     }
