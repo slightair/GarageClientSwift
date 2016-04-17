@@ -2,8 +2,7 @@ import Foundation
 import APIKit
 import Himotoki
 
-struct WrappedRequest<T: GarageRequestType where T.Resource: Decodable,
-    T.Resource == T.Resource.DecodedType>: RequestType {
+struct WrappedRequest<T: GarageRequestType where T.Resource: Decodable>: RequestType {
     typealias Response = GarageResponse<T.Resource>
 
     let baseRequest: T
@@ -53,8 +52,7 @@ struct WrappedRequest<T: GarageRequestType where T.Resource: Decodable,
     }
 }
 
-class RequestBuilder<T: GarageRequestType where T.Resource: Decodable,
-    T.Resource == T.Resource.DecodedType> {
+class RequestBuilder<T: GarageRequestType where T.Resource: Decodable> {
     static func buildRequest(baseRequest: T, configuration: GarageConfigurationType) ->
         WrappedRequest<T> {
         return WrappedRequest(baseRequest: baseRequest, configuration: configuration)
