@@ -2,12 +2,12 @@ import Foundation
 import APIKit
 import Himotoki
 
-struct SingleResourceRequest<T: GarageRequestType where T.Resource: Decodable>: RequestType {
-    typealias Response = GarageResponse<T.Resource>
+protocol ResourceRequest: RequestType {
+    var baseRequest: GarageRequestParameterContainer { get }
+    var configuration: GarageConfigurationType { get }
+}
 
-    let baseRequest: T
-    let configuration: GarageConfigurationType
-
+extension ResourceRequest {
     var baseURL: NSURL {
         return configuration.endpoint
     }
@@ -19,17 +19,6 @@ struct SingleResourceRequest<T: GarageRequestType where T.Resource: Decodable>: 
     var path: String {
         let pathPrefix = configuration.pathPrefix as NSString
         return pathPrefix.stringByAppendingPathComponent(baseRequest.path)
-    }
-
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> GarageResponse<T.Resource>? {
-        guard let resource: T.Resource = try? decodeValue(object) else {
-            return nil
-        }
-
-        let parameters = headerParameters(URLResponse)
-        return GarageResponse(resource: resource,
-                              totalCount: parameters.totalCount,
-                              linkHeader: parameters.linkHeader)
     }
 
     func headerParameters(response: NSHTTPURLResponse) -> (totalCount: Int?, linkHeader: LinkHeader?) {
@@ -51,64 +40,46 @@ struct SingleResourceRequest<T: GarageRequestType where T.Resource: Decodable>: 
     }
 }
 
-struct MultipleResourceRequest<T: GarageRequestType, R: Decodable
-    where T.Resource: CollectionType, T.Resource.Generator.Element == R>: RequestType {
-    typealias Response = GarageResponse<[R]>
+struct SingleResourceRequest<R: GarageRequestType, D: Decodable where R.Resource == D>: ResourceRequest {
+    typealias Response = GarageResponse<D>
 
-    let baseRequest: T
+    let baseRequest: GarageRequestParameterContainer
     let configuration: GarageConfigurationType
 
-    var baseURL: NSURL {
-        return configuration.endpoint
-    }
-
-    var method: HTTPMethod {
-        return baseRequest.method
-    }
-
-    var path: String {
-        let pathPrefix = configuration.pathPrefix as NSString
-        return pathPrefix.stringByAppendingPathComponent(baseRequest.path)
-    }
-
     func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
-        guard let resource: [R] = try? decodeArray(object) else {
+        guard let resource: D = try? decodeValue(object) else {
             return nil
         }
 
         let parameters = headerParameters(URLResponse)
-        return GarageResponse(resource: resource,
-                              totalCount: parameters.totalCount,
-                              linkHeader: parameters.linkHeader)
+        return GarageResponse(resource: resource, totalCount: parameters.totalCount, linkHeader: parameters.linkHeader)
     }
+}
 
-    func headerParameters(response: NSHTTPURLResponse) -> (totalCount: Int?, linkHeader: LinkHeader?) {
-        let totalCount: Int?
-        if let totalCountString = response.allHeaderFields["X-List-Totalcount"] as? String {
-            totalCount = Int(totalCountString)
-        } else {
-            totalCount = nil
+struct MultipleResourceRequest<R: GarageRequestType, D: Decodable where R.Resource: CollectionType, R.Resource.Generator.Element == D>: ResourceRequest {
+    typealias Response = GarageResponse<[D]>
+
+    let baseRequest: GarageRequestParameterContainer
+    let configuration: GarageConfigurationType
+
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+        guard let resource: [D] = try? decodeArray(object) else {
+            return nil
         }
 
-        let linkHeader: LinkHeader?
-        if let linkHeaderString = response.allHeaderFields["Link"] as? String {
-            linkHeader = LinkHeader(string: linkHeaderString)
-        } else {
-            linkHeader = nil
-        }
-
-        return (totalCount, linkHeader)
+        let parameters = headerParameters(URLResponse)
+        return GarageResponse(resource: resource, totalCount: parameters.totalCount, linkHeader: parameters.linkHeader)
     }
 }
 
 struct RequestBuilder {
-    static func buildRequest<T: GarageRequestType where T.Resource: Decodable>
-        (baseRequest: T, configuration: GarageConfigurationType) -> SingleResourceRequest<T> {
+    static func buildRequest<R: GarageRequestType, D: Decodable where R.Resource == D>
+        (baseRequest: R, configuration: GarageConfigurationType) -> SingleResourceRequest<R, D> {
         return SingleResourceRequest(baseRequest: baseRequest, configuration: configuration)
     }
 
-    static func buildRequest<T: GarageRequestType where T.Resource: CollectionType, T.Resource.Generator.Element: Decodable>
-        (baseRequest: T, configuration: GarageConfigurationType) -> MultipleResourceRequest<T, T.Resource.Generator.Element> {
+    static func buildRequest<R: GarageRequestType, D: Decodable where R.Resource: CollectionType, R.Resource.Generator.Element == D>
+        (baseRequest: R, configuration: GarageConfigurationType) -> MultipleResourceRequest<R, D> {
         return MultipleResourceRequest(baseRequest: baseRequest, configuration: configuration)
     }
 }

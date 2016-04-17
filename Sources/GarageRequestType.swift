@@ -1,9 +1,11 @@
 import Foundation
 import APIKit
 
-protocol GarageRequestType {
-    associatedtype Resource
-
+protocol GarageRequestParameterContainer {
     var method: HTTPMethod { get }
     var path: String { get }
+}
+
+protocol GarageRequestType: GarageRequestParameterContainer {
+    associatedtype Resource
 }

@@ -26,11 +26,10 @@ class GarageClient {
         return sessionConfiguration
     }
 
-    func sendRequest<T: GarageRequestType where T.Resource: Decodable>
-        (request: T, handler: (Result<GarageResponse<T.Resource>, GarageError>) -> Void = {result in}) -> NSURLSessionDataTask? {
-        let wrappedRequest = RequestBuilder.buildRequest(request, configuration: configuration)
-
-        return session.sendRequest(wrappedRequest) { result in
+    func sendRequest<R: GarageRequestType, D: Decodable where R.Resource == D>
+        (request: R, handler: (Result<GarageResponse<D>, GarageError>) -> Void = {result in}) -> NSURLSessionDataTask? {
+        let resourceRequest = RequestBuilder.buildRequest(request, configuration: configuration)
+        return session.sendRequest(resourceRequest) { result in
             switch result {
             case .Success(let result):
                 handler(Result.Success(result))
@@ -40,11 +39,10 @@ class GarageClient {
         }
     }
 
-    func sendRequest<T: GarageRequestType where T.Resource: CollectionType, T.Resource.Generator.Element: Decodable>
-        (request: T, handler: (Result<GarageResponse<[T.Resource.Generator.Element]>, GarageError>) -> Void = {result in}) -> NSURLSessionDataTask? {
-        let wrappedRequest = RequestBuilder.buildRequest(request, configuration: configuration)
-
-        return session.sendRequest(wrappedRequest) { result in
+    func sendRequest<R: GarageRequestType, D: Decodable where R.Resource: CollectionType, R.Resource.Generator.Element == D>
+        (request: R, handler: (Result<GarageResponse<[D]>, GarageError>) -> Void = {result in}) -> NSURLSessionDataTask? {
+        let resourceRequest = RequestBuilder.buildRequest(request, configuration: configuration)
+        return session.sendRequest(resourceRequest) { result in
             switch result {
             case .Success(let result):
                 handler(Result.Success(result))
