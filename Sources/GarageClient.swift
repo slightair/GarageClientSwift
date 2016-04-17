@@ -29,6 +29,21 @@ class GarageClient {
     func sendRequest<T: GarageRequestType where T.Resource: Decodable>
         (request: T, handler: (Result<GarageResponse<T.Resource>, GarageError>) -> Void = {result in}) -> NSURLSessionDataTask? {
         let wrappedRequest = RequestBuilder.buildRequest(request, configuration: configuration)
+
+        return session.sendRequest(wrappedRequest) { result in
+            switch result {
+            case .Success(let result):
+                handler(Result.Success(result))
+            case .Failure(let error):
+                handler(Result.Failure(GarageClient.GarageErrorFromAPIError(error)))
+            }
+        }
+    }
+
+    func sendRequest<T: GarageRequestType where T.Resource: CollectionType, T.Resource.Generator.Element: Decodable>
+        (request: T, handler: (Result<GarageResponse<[T.Resource.Generator.Element]>, GarageError>) -> Void = {result in}) -> NSURLSessionDataTask? {
+        let wrappedRequest = RequestBuilder.buildRequest(request, configuration: configuration)
+
         return session.sendRequest(wrappedRequest) { result in
             switch result {
             case .Success(let result):

@@ -1,7 +1,6 @@
 import Foundation
-import Himotoki
 
-struct GarageResponse<T: Decodable> {
+struct GarageResponse<T> {
     var resource: T
     var totalCount: Int?
     var linkHeader: LinkHeader?
