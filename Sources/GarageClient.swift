@@ -27,8 +27,7 @@ class GarageClient {
     }
 
     func sendRequest<T: GarageRequestType where T.Resource: Decodable>
-        (request: T, handler: (Result<GarageResponse<T.Resource>, GarageError>) ->
-        Void = {result in}) -> NSURLSessionDataTask? {
+        (request: T, handler: (Result<GarageResponse<T.Resource>, GarageError>) -> Void = {result in}) -> NSURLSessionDataTask? {
         let wrappedRequest = RequestBuilder.buildRequest(request, configuration: configuration)
         return session.sendRequest(wrappedRequest) { result in
             switch result {
@@ -40,7 +39,6 @@ class GarageClient {
         }
     }
 
-    // swiftlint:disable:next function_body_length
     static func GarageErrorFromAPIError(baseError: APIError) -> GarageError {
         switch baseError {
         case .ConnectionError(let error):

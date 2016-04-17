@@ -32,8 +32,7 @@ struct WrappedRequest<T: GarageRequestType where T.Resource: Decodable>: Request
                               linkHeader: parameters.linkHeader)
     }
 
-    func headerParameters(response: NSHTTPURLResponse) ->
-        (totalCount: Int?, linkHeader: LinkHeader?) {
+    func headerParameters(response: NSHTTPURLResponse) -> (totalCount: Int?, linkHeader: LinkHeader?) {
         let totalCount: Int?
         if let totalCountString = response.allHeaderFields["X-List-Totalcount"] as? String {
             totalCount = Int(totalCountString)
@@ -53,8 +52,7 @@ struct WrappedRequest<T: GarageRequestType where T.Resource: Decodable>: Request
 }
 
 class RequestBuilder<T: GarageRequestType where T.Resource: Decodable> {
-    static func buildRequest(baseRequest: T, configuration: GarageConfigurationType) ->
-        WrappedRequest<T> {
+    static func buildRequest(baseRequest: T, configuration: GarageConfigurationType) -> WrappedRequest<T> {
         return WrappedRequest(baseRequest: baseRequest, configuration: configuration)
     }
 }

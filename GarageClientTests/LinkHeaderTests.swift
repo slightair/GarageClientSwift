@@ -14,7 +14,6 @@ class LinkHeaderTests: XCTestCase {
     }
 
     func testParseLinkHeaderHasFirst() {
-        // swiftlint:disable:next line_length
         let linkHeaderString = "</v1/users?page=1&per_page=1>; rel=\"first\"; page=\"1\", </v1/users?page=3&per_page=1>; rel=\"prev\"; page=\"3\""
         let linkHeader = LinkHeader(string: linkHeaderString)
 
@@ -29,7 +28,6 @@ class LinkHeaderTests: XCTestCase {
     }
 
     func testParseLinkHeaderHasPrev() {
-        // swiftlint:disable:next line_length
         let linkHeaderString = "</v1/users?page=1&per_page=1>; rel=\"first\"; page=\"1\", </v1/users?page=3&per_page=1>; rel=\"prev\"; page=\"3\""
         let linkHeader = LinkHeader(string: linkHeaderString)
 
@@ -44,7 +42,6 @@ class LinkHeaderTests: XCTestCase {
     }
 
     func testParseLinkHeaderHasNext() {
-        // swiftlint:disable:next line_length
         let linkHeaderString = "</v1/users?page=2&per_page=1>; rel=\"next\"; page=\"2\", </v1/users?page=4&per_page=1>; rel=\"last\"; page=\"4\""
         let linkHeader = LinkHeader(string: linkHeaderString)
 
@@ -59,7 +56,6 @@ class LinkHeaderTests: XCTestCase {
     }
 
     func testParseLinkHeaderHasLast() {
-        // swiftlint:disable:next line_length
         let linkHeaderString = "</v1/users?page=2&per_page=1>; rel=\"next\"; page=\"2\", </v1/users?page=4&per_page=1>; rel=\"last\"; page=\"4\""
         let linkHeader = LinkHeader(string: linkHeaderString)
 
@@ -74,7 +70,6 @@ class LinkHeaderTests: XCTestCase {
     }
 
     func testParseLinkHeaderAll() {
-        // swiftlint:disable:next line_length
         let linkHeaderString = "</v1/users?page=1&per_page=1>; rel=\"first\"; page=\"1\", </v1/users?page=2&per_page=1>; rel=\"prev\"; page=\"2\", </v1/users?page=4&per_page=1>; rel=\"next\"; page=\"4\", </v1/users?page=4&per_page=1>; rel=\"last\"; page=\"4\""
         let linkHeader = LinkHeader(string: linkHeaderString)
 
