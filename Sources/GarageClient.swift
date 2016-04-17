@@ -52,6 +52,7 @@ class GarageClient {
         }
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     static func GarageErrorFromAPIError(baseError: APIError) -> GarageError {
         switch baseError {
         case .ConnectionError(let error):
