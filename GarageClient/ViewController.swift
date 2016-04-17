@@ -29,6 +29,13 @@ struct GetUsersRequest: GarageRequestType {
     var path: String {
         return "/users"
     }
+
+    var parameters: [String : AnyObject] {
+        return [
+            "page": 2,
+            "per_page": 1,
+        ]
+    }
 }
 
 struct User: Decodable {

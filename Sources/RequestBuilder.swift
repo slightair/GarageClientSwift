@@ -21,6 +21,22 @@ extension ResourceRequest {
         return pathPrefix.stringByAppendingPathComponent(baseRequest.path)
     }
 
+    var parameters: [String: AnyObject] {
+        return baseRequest.parameters
+    }
+
+    var objectParameters: AnyObject {
+        return baseRequest.objectParameters
+    }
+
+    var HTTPHeaderFields: [String: String] {
+        return baseRequest.HTTPHeaderFields
+    }
+
+    func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+        return try baseRequest.configureURLRequest(URLRequest)
+    }
+
     func headerParameters(response: NSHTTPURLResponse) -> (totalCount: Int?, linkHeader: LinkHeader?) {
         let totalCount: Int?
         if let totalCountString = response.allHeaderFields["X-List-Totalcount"] as? String {
