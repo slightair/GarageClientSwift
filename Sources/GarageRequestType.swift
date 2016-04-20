@@ -1,7 +1,7 @@
 import Foundation
 import APIKit
 
-protocol GarageRequestParameterContainer {
+public protocol GarageRequestParameterContainer {
     var method: HTTPMethod { get }
     var path: String { get }
 
@@ -13,24 +13,24 @@ protocol GarageRequestParameterContainer {
     func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest
 }
 
-extension GarageRequestParameterContainer {
-    var parameters: [String: AnyObject] {
+public extension GarageRequestParameterContainer {
+    public var parameters: [String: AnyObject] {
         return [:]
     }
 
-    var objectParameters: AnyObject {
+    public var objectParameters: AnyObject {
         return []
     }
 
-    var HTTPHeaderFields: [String: String] {
+    public var HTTPHeaderFields: [String: String] {
         return [:]
     }
 
-    func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+    public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
         return URLRequest
     }
 }
 
-protocol GarageRequestType: GarageRequestParameterContainer {
+public protocol GarageRequestType: GarageRequestParameterContainer {
     associatedtype Resource
 }

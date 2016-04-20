@@ -1,7 +1,7 @@
 import Foundation
 
-struct GarageResponse<T> {
-    var resource: T
-    var totalCount: Int?
-    var linkHeader: LinkHeader?
+public struct GarageResponse<T> {
+    public var resource: T
+    public var totalCount: Int?
+    public var linkHeader: LinkHeader?
 }

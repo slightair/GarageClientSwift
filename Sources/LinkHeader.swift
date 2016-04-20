@@ -1,12 +1,12 @@
 import Foundation
 
-struct LinkHeader {
-    struct Element {
-        let uri: NSURL
-        let rel: String
-        let page: Int
+public struct LinkHeader {
+    public struct Element {
+        public let uri: NSURL
+        public let rel: String
+        public let page: Int
 
-        init?(string: String) {
+        public init?(string: String) {
             let attributes = string.componentsSeparatedByString("; ")
             guard attributes.count == 3 else {
                 return nil
@@ -45,28 +45,28 @@ struct LinkHeader {
         }
     }
 
-    let first: Element?
-    let prev: Element?
-    let next: Element?
-    let last: Element?
+    public let first: Element?
+    public let prev: Element?
+    public let next: Element?
+    public let last: Element?
 
-    var hasFirstPage: Bool {
+    public var hasFirstPage: Bool {
         return first != nil
     }
 
-    var hasPrevPage: Bool {
+    public var hasPrevPage: Bool {
         return prev != nil
     }
 
-    var hasNextPage: Bool {
+    public var hasNextPage: Bool {
         return next != nil
     }
 
-    var hasLastPage: Bool {
+    public var hasLastPage: Bool {
         return last != nil
     }
 
-    init?(string: String) {
+    public init?(string: String) {
         let elements = string.componentsSeparatedByString(", ").flatMap { Element(string: $0) }
 
         first = elements.filter { $0.rel == "first" }.first

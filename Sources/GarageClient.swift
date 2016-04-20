@@ -3,9 +3,9 @@ import APIKit
 import Result
 import Himotoki
 
-class GarageClient {
-    let configuration: GarageConfigurationType
-    var session: Session!
+public class GarageClient {
+    public let configuration: GarageConfigurationType
+    public var session: Session!
 
     init(configuration: GarageConfigurationType) {
         self.configuration = configuration
@@ -26,7 +26,7 @@ class GarageClient {
         return sessionConfiguration
     }
 
-    func sendRequest<R: GarageRequestType, D: Decodable where R.Resource == D>
+    public func sendRequest<R: GarageRequestType, D: Decodable where R.Resource == D>
         (request: R, handler: (Result<GarageResponse<D>, GarageError>) -> Void = {result in}) -> NSURLSessionDataTask? {
         let resourceRequest = RequestBuilder.buildRequest(request, configuration: configuration)
         return session.sendRequest(resourceRequest) { result in
@@ -39,7 +39,7 @@ class GarageClient {
         }
     }
 
-    func sendRequest<R: GarageRequestType, D: Decodable where R.Resource: CollectionType, R.Resource.Generator.Element == D>
+    public func sendRequest<R: GarageRequestType, D: Decodable where R.Resource: CollectionType, R.Resource.Generator.Element == D>
         (request: R, handler: (Result<GarageResponse<[D]>, GarageError>) -> Void = {result in}) -> NSURLSessionDataTask? {
         let resourceRequest = RequestBuilder.buildRequest(request, configuration: configuration)
         return session.sendRequest(resourceRequest) { result in

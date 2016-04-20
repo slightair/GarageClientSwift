@@ -52,5 +52,7 @@ xcuserdata/
 *.xccheckout
 *.xcscmblueprint
 
-**/Carthage/Checkouts
-**/Carthage/Build
+Carthage/Build
+
+Packages/
+.build/

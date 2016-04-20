@@ -1,6 +1,6 @@
 import Foundation
 
-protocol GarageConfigurationType {
+public protocol GarageConfigurationType {
     var endpoint: NSURL { get }
     var accessToken: String { get }
     var headers: [String: String] { get }
@@ -8,8 +8,8 @@ protocol GarageConfigurationType {
     var verbose: Bool { get }
 }
 
-extension GarageConfigurationType {
-    var defaultUserAgent: String {
+public extension GarageConfigurationType {
+    public var defaultUserAgent: String {
         let clientName = "GarageClientSwift"
 
         if let info = NSBundle.mainBundle().infoDictionary {
@@ -22,18 +22,18 @@ extension GarageConfigurationType {
         return clientName
     }
 
-    var headers: [String: String] {
+    public var headers: [String: String] {
         return [
             "Accept": "application/json",
             "User-Agent": defaultUserAgent,
         ]
     }
 
-    var pathPrefix: String {
+    public var pathPrefix: String {
         return "v1"
     }
 
-    var verbose: Bool {
+    public var verbose: Bool {
         return false
     }
 }
