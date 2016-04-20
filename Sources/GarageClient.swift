@@ -7,7 +7,7 @@ public class GarageClient {
     public let configuration: GarageConfigurationType
     public var session: Session!
 
-    init(configuration: GarageConfigurationType) {
+    public init(configuration: GarageConfigurationType) {
         self.configuration = configuration
 
         let urlSession = NSURLSession(configuration: sessionConfiguration(),
