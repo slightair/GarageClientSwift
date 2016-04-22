@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "570B0A541CC7B84E00F7C0AF"
-               BuildableName = "GarageClient.framework"
-               BlueprintName = "GarageClient"
+               BlueprintIdentifier = "570B0B821CCA440900F7C0AF"
+               BuildableName = "GarageClient iOS.framework"
+               BlueprintName = "GarageClient iOS"
                ReferencedContainer = "container:GarageClient.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "570B0A5E1CC7B84E00F7C0AF"
-               BuildableName = "GarageClientTests.xctest"
-               BlueprintName = "GarageClientTests"
+               BlueprintIdentifier = "570B0B8B1CCA440900F7C0AF"
+               BuildableName = "GarageClient iOSTests.xctest"
+               BlueprintName = "GarageClient iOSTests"
                ReferencedContainer = "container:GarageClient.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "570B0A541CC7B84E00F7C0AF"
-            BuildableName = "GarageClient.framework"
-            BlueprintName = "GarageClient"
+            BlueprintIdentifier = "570B0B821CCA440900F7C0AF"
+            BuildableName = "GarageClient iOS.framework"
+            BlueprintName = "GarageClient iOS"
             ReferencedContainer = "container:GarageClient.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "570B0A541CC7B84E00F7C0AF"
-            BuildableName = "GarageClient.framework"
-            BlueprintName = "GarageClient"
+            BlueprintIdentifier = "570B0B821CCA440900F7C0AF"
+            BuildableName = "GarageClient iOS.framework"
+            BlueprintName = "GarageClient iOS"
             ReferencedContainer = "container:GarageClient.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "570B0A541CC7B84E00F7C0AF"
-            BuildableName = "GarageClient.framework"
-            BlueprintName = "GarageClient"
+            BlueprintIdentifier = "570B0B821CCA440900F7C0AF"
+            BuildableName = "GarageClient iOS.framework"
+            BlueprintName = "GarageClient iOS"
             ReferencedContainer = "container:GarageClient.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
