@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		570B0B481CCA41DD00F7C0AF /* GarageClient Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570B0B3E1CCA41DD00F7C0AF /* GarageClient Mac.framework */; };
-		570B0B711CCA420800F7C0AF /* GarageClient tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570B0B671CCA420800F7C0AF /* GarageClient tvOS.framework */; };
-		570B0B8D1CCA440900F7C0AF /* GarageClient iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570B0B831CCA440900F7C0AF /* GarageClient iOS.framework */; };
+		570B0B711CCA420800F7C0AF /* GarageClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570B0B671CCA420800F7C0AF /* GarageClient.framework */; };
 		570B0B9B1CCA464A00F7C0AF /* GarageClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 570B0B9A1CCA464A00F7C0AF /* GarageClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		570B0B9C1CCA464A00F7C0AF /* GarageClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 570B0B9A1CCA464A00F7C0AF /* GarageClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		570B0B9D1CCA464A00F7C0AF /* GarageClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 570B0B9A1CCA464A00F7C0AF /* GarageClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -48,6 +46,29 @@
 		570B0BBE1CCA469400F7C0AF /* LinkHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B0A741CC7BBAF00F7C0AF /* LinkHeaderTests.swift */; };
 		570B0BBF1CCA469500F7C0AF /* GarageErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B0A731CC7BBAF00F7C0AF /* GarageErrorTests.swift */; };
 		570B0BC01CCA469500F7C0AF /* LinkHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B0A741CC7BBAF00F7C0AF /* LinkHeaderTests.swift */; };
+		573B24811CCA4E52003860F5 /* GarageClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570B0B831CCA440900F7C0AF /* GarageClient.framework */; };
+		573B24831CCA4EB5003860F5 /* GarageClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570B0B3E1CCA41DD00F7C0AF /* GarageClient.framework */; };
+		573B24961CCA50A8003860F5 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24931CCA50A8003860F5 /* APIKit.framework */; };
+		573B24971CCA50A8003860F5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24941CCA50A8003860F5 /* Result.framework */; };
+		573B24981CCA50A8003860F5 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24951CCA50A8003860F5 /* Himotoki.framework */; };
+		573B249C1CCA50BB003860F5 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24991CCA50BB003860F5 /* APIKit.framework */; };
+		573B249D1CCA50BB003860F5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B249A1CCA50BB003860F5 /* Result.framework */; };
+		573B249E1CCA50BB003860F5 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B249B1CCA50BB003860F5 /* Himotoki.framework */; };
+		573B249F1CCA50CE003860F5 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24931CCA50A8003860F5 /* APIKit.framework */; };
+		573B24A01CCA50CE003860F5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24941CCA50A8003860F5 /* Result.framework */; };
+		573B24A11CCA50CE003860F5 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24951CCA50A8003860F5 /* Himotoki.framework */; };
+		573B24A21CCA50DF003860F5 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24991CCA50BB003860F5 /* APIKit.framework */; };
+		573B24A31CCA50DF003860F5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B249A1CCA50BB003860F5 /* Result.framework */; };
+		573B24A41CCA50DF003860F5 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B249B1CCA50BB003860F5 /* Himotoki.framework */; };
+		573B24A81CCA50ED003860F5 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24A51CCA50ED003860F5 /* APIKit.framework */; };
+		573B24A91CCA50ED003860F5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24A61CCA50ED003860F5 /* Result.framework */; };
+		573B24AA1CCA50ED003860F5 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24A71CCA50ED003860F5 /* Himotoki.framework */; };
+		573B24AE1CCA50FD003860F5 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24AB1CCA50FD003860F5 /* APIKit.framework */; };
+		573B24AF1CCA50FD003860F5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24AC1CCA50FD003860F5 /* Result.framework */; };
+		573B24B01CCA50FD003860F5 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24AD1CCA50FD003860F5 /* Himotoki.framework */; };
+		573B24B11CCA510A003860F5 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24AB1CCA50FD003860F5 /* APIKit.framework */; };
+		573B24B21CCA510A003860F5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24AC1CCA50FD003860F5 /* Result.framework */; };
+		573B24B31CCA510A003860F5 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24AD1CCA50FD003860F5 /* Himotoki.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,14 +107,26 @@
 		570B0A7B1CC7BD1A00F7C0AF /* GarageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageResponse.swift; sourceTree = "<group>"; };
 		570B0A7C1CC7BD1A00F7C0AF /* LinkHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkHeader.swift; sourceTree = "<group>"; };
 		570B0A7D1CC7BD1A00F7C0AF /* RequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
-		570B0B3E1CCA41DD00F7C0AF /* GarageClient Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "GarageClient Mac.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		570B0B3E1CCA41DD00F7C0AF /* GarageClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GarageClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		570B0B471CCA41DD00F7C0AF /* GarageClient MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GarageClient MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		570B0B5A1CCA41F500F7C0AF /* GarageClient watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "GarageClient watchOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		570B0B671CCA420800F7C0AF /* GarageClient tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "GarageClient tvOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		570B0B5A1CCA41F500F7C0AF /* GarageClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GarageClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		570B0B671CCA420800F7C0AF /* GarageClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GarageClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		570B0B701CCA420800F7C0AF /* GarageClient tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GarageClient tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		570B0B831CCA440900F7C0AF /* GarageClient iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "GarageClient iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		570B0B831CCA440900F7C0AF /* GarageClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GarageClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		570B0B8C1CCA440900F7C0AF /* GarageClient iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GarageClient iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		570B0B9A1CCA464A00F7C0AF /* GarageClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GarageClient.h; sourceTree = "<group>"; };
+		573B24931CCA50A8003860F5 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/Mac/APIKit.framework; sourceTree = "<group>"; };
+		573B24941CCA50A8003860F5 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
+		573B24951CCA50A8003860F5 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/Mac/Himotoki.framework; sourceTree = "<group>"; };
+		573B24991CCA50BB003860F5 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
+		573B249A1CCA50BB003860F5 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		573B249B1CCA50BB003860F5 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/iOS/Himotoki.framework; sourceTree = "<group>"; };
+		573B24A51CCA50ED003860F5 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/watchOS/APIKit.framework; sourceTree = "<group>"; };
+		573B24A61CCA50ED003860F5 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/watchOS/Result.framework; sourceTree = "<group>"; };
+		573B24A71CCA50ED003860F5 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/watchOS/Himotoki.framework; sourceTree = "<group>"; };
+		573B24AB1CCA50FD003860F5 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/tvOS/APIKit.framework; sourceTree = "<group>"; };
+		573B24AC1CCA50FD003860F5 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
+		573B24AD1CCA50FD003860F5 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/tvOS/Himotoki.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +134,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				573B24961CCA50A8003860F5 /* APIKit.framework in Frameworks */,
+				573B24971CCA50A8003860F5 /* Result.framework in Frameworks */,
+				573B24981CCA50A8003860F5 /* Himotoki.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +144,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				570B0B481CCA41DD00F7C0AF /* GarageClient Mac.framework in Frameworks */,
+				573B249F1CCA50CE003860F5 /* APIKit.framework in Frameworks */,
+				573B24A01CCA50CE003860F5 /* Result.framework in Frameworks */,
+				573B24A11CCA50CE003860F5 /* Himotoki.framework in Frameworks */,
+				573B24831CCA4EB5003860F5 /* GarageClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +155,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				573B24A81CCA50ED003860F5 /* APIKit.framework in Frameworks */,
+				573B24A91CCA50ED003860F5 /* Result.framework in Frameworks */,
+				573B24AA1CCA50ED003860F5 /* Himotoki.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +165,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				573B24AE1CCA50FD003860F5 /* APIKit.framework in Frameworks */,
+				573B24AF1CCA50FD003860F5 /* Result.framework in Frameworks */,
+				573B24B01CCA50FD003860F5 /* Himotoki.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +175,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				570B0B711CCA420800F7C0AF /* GarageClient tvOS.framework in Frameworks */,
+				573B24B11CCA510A003860F5 /* APIKit.framework in Frameworks */,
+				573B24B21CCA510A003860F5 /* Result.framework in Frameworks */,
+				573B24B31CCA510A003860F5 /* Himotoki.framework in Frameworks */,
+				570B0B711CCA420800F7C0AF /* GarageClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +186,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				573B249C1CCA50BB003860F5 /* APIKit.framework in Frameworks */,
+				573B249D1CCA50BB003860F5 /* Result.framework in Frameworks */,
+				573B249E1CCA50BB003860F5 /* Himotoki.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,7 +196,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				570B0B8D1CCA440900F7C0AF /* GarageClient iOS.framework in Frameworks */,
+				573B24A21CCA50DF003860F5 /* APIKit.framework in Frameworks */,
+				573B24A31CCA50DF003860F5 /* Result.framework in Frameworks */,
+				573B24A41CCA50DF003860F5 /* Himotoki.framework in Frameworks */,
+				573B24811CCA4E52003860F5 /* GarageClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +211,7 @@
 			children = (
 				570B0A571CC7B84E00F7C0AF /* Sources */,
 				570B0A631CC7B84E00F7C0AF /* Tests */,
+				573B24B41CCA5138003860F5 /* Frameworks */,
 				570B0A561CC7B84E00F7C0AF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -164,12 +219,12 @@
 		570B0A561CC7B84E00F7C0AF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				570B0B3E1CCA41DD00F7C0AF /* GarageClient Mac.framework */,
+				570B0B3E1CCA41DD00F7C0AF /* GarageClient.framework */,
 				570B0B471CCA41DD00F7C0AF /* GarageClient MacTests.xctest */,
-				570B0B5A1CCA41F500F7C0AF /* GarageClient watchOS.framework */,
-				570B0B671CCA420800F7C0AF /* GarageClient tvOS.framework */,
+				570B0B5A1CCA41F500F7C0AF /* GarageClient.framework */,
+				570B0B671CCA420800F7C0AF /* GarageClient.framework */,
 				570B0B701CCA420800F7C0AF /* GarageClient tvOSTests.xctest */,
-				570B0B831CCA440900F7C0AF /* GarageClient iOS.framework */,
+				570B0B831CCA440900F7C0AF /* GarageClient.framework */,
 				570B0B8C1CCA440900F7C0AF /* GarageClient iOSTests.xctest */,
 			);
 			name = Products;
@@ -225,6 +280,25 @@
 			path = GarageClient;
 			sourceTree = "<group>";
 		};
+		573B24B41CCA5138003860F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				573B24AB1CCA50FD003860F5 /* APIKit.framework */,
+				573B24AC1CCA50FD003860F5 /* Result.framework */,
+				573B24AD1CCA50FD003860F5 /* Himotoki.framework */,
+				573B24A51CCA50ED003860F5 /* APIKit.framework */,
+				573B24A61CCA50ED003860F5 /* Result.framework */,
+				573B24A71CCA50ED003860F5 /* Himotoki.framework */,
+				573B24991CCA50BB003860F5 /* APIKit.framework */,
+				573B249A1CCA50BB003860F5 /* Result.framework */,
+				573B249B1CCA50BB003860F5 /* Himotoki.framework */,
+				573B24931CCA50A8003860F5 /* APIKit.framework */,
+				573B24941CCA50A8003860F5 /* Result.framework */,
+				573B24951CCA50A8003860F5 /* Himotoki.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -278,7 +352,7 @@
 			);
 			name = "GarageClient Mac";
 			productName = "GarageClient Mac";
-			productReference = 570B0B3E1CCA41DD00F7C0AF /* GarageClient Mac.framework */;
+			productReference = 570B0B3E1CCA41DD00F7C0AF /* GarageClient.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		570B0B461CCA41DD00F7C0AF /* GarageClient MacTests */ = {
@@ -314,7 +388,7 @@
 			);
 			name = "GarageClient watchOS";
 			productName = "GarageClient watchOS";
-			productReference = 570B0B5A1CCA41F500F7C0AF /* GarageClient watchOS.framework */;
+			productReference = 570B0B5A1CCA41F500F7C0AF /* GarageClient.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		570B0B661CCA420800F7C0AF /* GarageClient tvOS */ = {
@@ -332,7 +406,7 @@
 			);
 			name = "GarageClient tvOS";
 			productName = "GarageClient tvOS";
-			productReference = 570B0B671CCA420800F7C0AF /* GarageClient tvOS.framework */;
+			productReference = 570B0B671CCA420800F7C0AF /* GarageClient.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		570B0B6F1CCA420800F7C0AF /* GarageClient tvOSTests */ = {
@@ -368,7 +442,7 @@
 			);
 			name = "GarageClient iOS";
 			productName = "GarageClient iOS";
-			productReference = 570B0B831CCA440900F7C0AF /* GarageClient iOS.framework */;
+			productReference = 570B0B831CCA440900F7C0AF /* GarageClient.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		570B0B8B1CCA440900F7C0AF /* GarageClient iOSTests */ = {
@@ -702,13 +776,17 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "GarageClient Mac/Info.plist";
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.clv.GarageClient-Mac";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GarageClient;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
@@ -723,13 +801,17 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "GarageClient Mac/Info.plist";
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.clv.GarageClient-Mac";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GarageClient;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
@@ -740,7 +822,11 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "GarageClient MacTests/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = Tests/GarageClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.clv.GarageClient-MacTests";
@@ -754,7 +840,11 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "GarageClient MacTests/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = Tests/GarageClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.clv.GarageClient-MacTests";
@@ -771,15 +861,20 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "GarageClient watchOS/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.clv.GarageClient-watchOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GarageClient;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -791,15 +886,20 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "GarageClient watchOS/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.clv.GarageClient-watchOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GarageClient;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
@@ -810,15 +910,20 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "GarageClient tvOS/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.clv.GarageClient-tvOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GarageClient;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.2;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -829,22 +934,31 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "GarageClient tvOS/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.clv.GarageClient-tvOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GarageClient;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.2;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
 		570B0B7C1CCA420800F7C0AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "GarageClient tvOSTests/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = Tests/GarageClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.clv.GarageClient-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -856,7 +970,11 @@
 		570B0B7D1CCA420800F7C0AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "GarageClient tvOSTests/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = Tests/GarageClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.clv.GarageClient-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -872,11 +990,16 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "GarageClient iOS/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.clv.GarageClient-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GarageClient;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -888,11 +1011,16 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "GarageClient iOS/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.clv.GarageClient-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = GarageClient;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -900,7 +1028,11 @@
 		570B0B981CCA440900F7C0AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "GarageClient iOSTests/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Tests/GarageClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.clv.GarageClient-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -910,7 +1042,11 @@
 		570B0B991CCA440900F7C0AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "GarageClient iOSTests/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Tests/GarageClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cc.clv.GarageClient-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -936,6 +1072,7 @@
 				570B0B511CCA41DD00F7C0AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		570B0B521CCA41DD00F7C0AF /* Build configuration list for PBXNativeTarget "GarageClient MacTests" */ = {
 			isa = XCConfigurationList;
@@ -944,6 +1081,7 @@
 				570B0B541CCA41DD00F7C0AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		570B0B5F1CCA41F500F7C0AF /* Build configuration list for PBXNativeTarget "GarageClient watchOS" */ = {
 			isa = XCConfigurationList;
@@ -952,6 +1090,7 @@
 				570B0B611CCA41F500F7C0AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		570B0B781CCA420800F7C0AF /* Build configuration list for PBXNativeTarget "GarageClient tvOS" */ = {
 			isa = XCConfigurationList;
@@ -960,6 +1099,7 @@
 				570B0B7A1CCA420800F7C0AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		570B0B7B1CCA420800F7C0AF /* Build configuration list for PBXNativeTarget "GarageClient tvOSTests" */ = {
 			isa = XCConfigurationList;
@@ -968,6 +1108,7 @@
 				570B0B7D1CCA420800F7C0AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		570B0B941CCA440900F7C0AF /* Build configuration list for PBXNativeTarget "GarageClient iOS" */ = {
 			isa = XCConfigurationList;
@@ -976,6 +1117,7 @@
 				570B0B961CCA440900F7C0AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		570B0B971CCA440900F7C0AF /* Build configuration list for PBXNativeTarget "GarageClient iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -984,6 +1126,7 @@
 				570B0B991CCA440900F7C0AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
