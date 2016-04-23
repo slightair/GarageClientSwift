@@ -69,6 +69,15 @@
 		573B24B11CCA510A003860F5 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24AB1CCA50FD003860F5 /* APIKit.framework */; };
 		573B24B21CCA510A003860F5 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24AC1CCA50FD003860F5 /* Result.framework */; };
 		573B24B31CCA510A003860F5 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24AD1CCA50FD003860F5 /* Himotoki.framework */; };
+		573B24D31CCB0233003860F5 /* APIKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24931CCA50A8003860F5 /* APIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		573B24D41CCB0233003860F5 /* Result.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24941CCA50A8003860F5 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		573B24D51CCB0233003860F5 /* Himotoki.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24951CCA50A8003860F5 /* Himotoki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		573B24D61CCB0248003860F5 /* APIKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24991CCA50BB003860F5 /* APIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		573B24D71CCB0248003860F5 /* Result.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 573B249A1CCA50BB003860F5 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		573B24D81CCB0248003860F5 /* Himotoki.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 573B249B1CCA50BB003860F5 /* Himotoki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		573B24D91CCB0265003860F5 /* APIKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24AB1CCA50FD003860F5 /* APIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		573B24DA1CCB0265003860F5 /* Result.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24AC1CCA50FD003860F5 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		573B24DB1CCB0265003860F5 /* Himotoki.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 573B24AD1CCA50FD003860F5 /* Himotoki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +103,48 @@
 			remoteInfo = "GarageClient iOS";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		573B24B51CCA53C3003860F5 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				573B24D31CCB0233003860F5 /* APIKit.framework in Copy Frameworks */,
+				573B24D41CCB0233003860F5 /* Result.framework in Copy Frameworks */,
+				573B24D51CCB0233003860F5 /* Himotoki.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		573B24BC1CCA542A003860F5 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				573B24D61CCB0248003860F5 /* APIKit.framework in Copy Frameworks */,
+				573B24D71CCB0248003860F5 /* Result.framework in Copy Frameworks */,
+				573B24D81CCB0248003860F5 /* Himotoki.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		573B24C91CCB0058003860F5 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				573B24D91CCB0265003860F5 /* APIKit.framework in Copy Frameworks */,
+				573B24DA1CCB0265003860F5 /* Result.framework in Copy Frameworks */,
+				573B24DB1CCB0265003860F5 /* Himotoki.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		570B0A5A1CC7B84E00F7C0AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -362,6 +413,7 @@
 				570B0B431CCA41DD00F7C0AF /* Sources */,
 				570B0B441CCA41DD00F7C0AF /* Frameworks */,
 				570B0B451CCA41DD00F7C0AF /* Resources */,
+				573B24B51CCA53C3003860F5 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -416,6 +468,7 @@
 				570B0B6C1CCA420800F7C0AF /* Sources */,
 				570B0B6D1CCA420800F7C0AF /* Frameworks */,
 				570B0B6E1CCA420800F7C0AF /* Resources */,
+				573B24C91CCB0058003860F5 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -452,6 +505,7 @@
 				570B0B881CCA440900F7C0AF /* Sources */,
 				570B0B891CCA440900F7C0AF /* Frameworks */,
 				570B0B8A1CCA440900F7C0AF /* Resources */,
+				573B24BC1CCA542A003860F5 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
