@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "570B0B661CCA420800F7C0AF"
-               BuildableName = "GarageClient tvOS.framework"
+               BuildableName = "GarageClient.framework"
                BlueprintName = "GarageClient tvOS"
                ReferencedContainer = "container:GarageClient.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "570B0B661CCA420800F7C0AF"
-            BuildableName = "GarageClient tvOS.framework"
+            BuildableName = "GarageClient.framework"
             BlueprintName = "GarageClient tvOS"
             ReferencedContainer = "container:GarageClient.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "570B0B661CCA420800F7C0AF"
-            BuildableName = "GarageClient tvOS.framework"
+            BuildableName = "GarageClient.framework"
             BlueprintName = "GarageClient tvOS"
             ReferencedContainer = "container:GarageClient.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "570B0B661CCA420800F7C0AF"
-            BuildableName = "GarageClient tvOS.framework"
+            BuildableName = "GarageClient.framework"
             BlueprintName = "GarageClient tvOS"
             ReferencedContainer = "container:GarageClient.xcodeproj">
          </BuildableReference>

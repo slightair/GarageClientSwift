@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "570B0B591CCA41F500F7C0AF"
-               BuildableName = "GarageClient watchOS.framework"
+               BuildableName = "GarageClient.framework"
                BlueprintName = "GarageClient watchOS"
                ReferencedContainer = "container:GarageClient.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "570B0B591CCA41F500F7C0AF"
-            BuildableName = "GarageClient watchOS.framework"
+            BuildableName = "GarageClient.framework"
             BlueprintName = "GarageClient watchOS"
             ReferencedContainer = "container:GarageClient.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "570B0B591CCA41F500F7C0AF"
-            BuildableName = "GarageClient watchOS.framework"
+            BuildableName = "GarageClient.framework"
             BlueprintName = "GarageClient watchOS"
             ReferencedContainer = "container:GarageClient.xcodeproj">
          </BuildableReference>
