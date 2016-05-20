@@ -64,35 +64,35 @@ public class GarageClient {
         case .ResponseBodyDeserializationError, .InvalidResponseStructure, .NotHTTPURLResponse:
             return .InvalidResponse(baseError)
         case .UnacceptableStatusCode(let statusCode, let error as NSError):
-            guard let urlResponse = error.userInfo["URLResponse"] as? NSHTTPURLResponse else {
+            guard let object = error.userInfo["object"], urlResponse = error.userInfo["URLResponse"] as? NSHTTPURLResponse else {
                 return .Unknown(baseError)
             }
 
             switch statusCode {
             case 400:
-                return .BadRequest(urlResponse)
+                return .BadRequest(object, urlResponse)
             case 401:
-                return .Unauthorized(urlResponse)
+                return .Unauthorized(object, urlResponse)
             case 403:
-                return .Forbidden(urlResponse)
+                return .Forbidden(object, urlResponse)
             case 404:
-                return .NotFound(urlResponse)
+                return .NotFound(object, urlResponse)
             case 406:
-                return .NotAcceptable(urlResponse)
+                return .NotAcceptable(object, urlResponse)
             case 409:
-                return .Conflict(urlResponse)
+                return .Conflict(object, urlResponse)
             case 415:
-                return .UnsupportedMediaType(urlResponse)
+                return .UnsupportedMediaType(object, urlResponse)
             case 422:
-                return .UnprocessableEntity(urlResponse)
+                return .UnprocessableEntity(object, urlResponse)
             case 500:
-                return .InternalServerError(urlResponse)
+                return .InternalServerError(object, urlResponse)
             case 503:
-                return .ServiceUnavailable(urlResponse)
+                return .ServiceUnavailable(object, urlResponse)
             case 400..<500:
-                return .ClientError(urlResponse)
+                return .ClientError(object, urlResponse)
             case 500..<600:
-                return .ServerError(urlResponse)
+                return .ServerError(object, urlResponse)
             default:
                 return .Unknown(baseError)
             }

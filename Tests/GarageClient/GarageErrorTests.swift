@@ -15,7 +15,13 @@ class GarageErrorTests: XCTestCase {
     func UnacceptableStatusCodeError(response response: NSHTTPURLResponse) -> APIError {
         let error = NSError(domain: "APIKitErrorDomain",
                             code: 0,
-                            userInfo: ["URLResponse": response])
+                            userInfo: [
+                                "object": [
+                                    "status_code": response.statusCode,
+                                    "error": "error message",
+                                ],
+                                "URLResponse": response,
+                            ])
 
         return .UnacceptableStatusCode(response.statusCode, error)
     }
@@ -26,8 +32,10 @@ class GarageErrorTests: XCTestCase {
         let garageError = GarageClient.GarageErrorFromAPIError(APIError)
 
         switch garageError {
-        case .BadRequest(let errorResponse):
+        case .BadRequest(let object, let errorResponse):
             XCTAssertEqual(response, errorResponse)
+            XCTAssertEqual(object["status_code"], 400)
+            XCTAssertEqual(object["error"], "error message")
         default:
             XCTFail("Unexpected error type \(garageError)")
         }
@@ -39,8 +47,10 @@ class GarageErrorTests: XCTestCase {
         let garageError = GarageClient.GarageErrorFromAPIError(APIError)
 
         switch garageError {
-        case .Unauthorized(let errorResponse):
+        case .Unauthorized(let object, let errorResponse):
             XCTAssertEqual(response, errorResponse)
+            XCTAssertEqual(object["status_code"], 401)
+            XCTAssertEqual(object["error"], "error message")
         default:
             XCTFail("Unexpected error type \(garageError)")
         }
@@ -52,8 +62,10 @@ class GarageErrorTests: XCTestCase {
         let garageError = GarageClient.GarageErrorFromAPIError(APIError)
 
         switch garageError {
-        case .Forbidden(let errorResponse):
+        case .Forbidden(let object, let errorResponse):
             XCTAssertEqual(response, errorResponse)
+            XCTAssertEqual(object["status_code"], 403)
+            XCTAssertEqual(object["error"], "error message")
         default:
             XCTFail("Unexpected error type \(garageError)")
         }
@@ -65,8 +77,10 @@ class GarageErrorTests: XCTestCase {
         let garageError = GarageClient.GarageErrorFromAPIError(APIError)
 
         switch garageError {
-        case .NotFound(let errorResponse):
+        case .NotFound(let object, let errorResponse):
             XCTAssertEqual(response, errorResponse)
+            XCTAssertEqual(object["status_code"], 404)
+            XCTAssertEqual(object["error"], "error message")
         default:
             XCTFail("Unexpected error type \(garageError)")
         }
@@ -78,8 +92,10 @@ class GarageErrorTests: XCTestCase {
         let garageError = GarageClient.GarageErrorFromAPIError(APIError)
 
         switch garageError {
-        case .NotAcceptable(let errorResponse):
+        case .NotAcceptable(let object, let errorResponse):
             XCTAssertEqual(response, errorResponse)
+            XCTAssertEqual(object["status_code"], 406)
+            XCTAssertEqual(object["error"], "error message")
         default:
             XCTFail("Unexpected error type \(garageError)")
         }
@@ -91,8 +107,10 @@ class GarageErrorTests: XCTestCase {
         let garageError = GarageClient.GarageErrorFromAPIError(APIError)
 
         switch garageError {
-        case .Conflict(let errorResponse):
+        case .Conflict(let object, let errorResponse):
             XCTAssertEqual(response, errorResponse)
+            XCTAssertEqual(object["status_code"], 409)
+            XCTAssertEqual(object["error"], "error message")
         default:
             XCTFail("Unexpected error type \(garageError)")
         }
@@ -104,8 +122,10 @@ class GarageErrorTests: XCTestCase {
         let garageError = GarageClient.GarageErrorFromAPIError(APIError)
 
         switch garageError {
-        case .UnsupportedMediaType(let errorResponse):
+        case .UnsupportedMediaType(let object, let errorResponse):
             XCTAssertEqual(response, errorResponse)
+            XCTAssertEqual(object["status_code"], 415)
+            XCTAssertEqual(object["error"], "error message")
         default:
             XCTFail("Unexpected error type \(garageError)")
         }
@@ -117,8 +137,10 @@ class GarageErrorTests: XCTestCase {
         let garageError = GarageClient.GarageErrorFromAPIError(APIError)
 
         switch garageError {
-        case .UnprocessableEntity(let errorResponse):
+        case .UnprocessableEntity(let object, let errorResponse):
             XCTAssertEqual(response, errorResponse)
+            XCTAssertEqual(object["status_code"], 422)
+            XCTAssertEqual(object["error"], "error message")
         default:
             XCTFail("Unexpected error type \(garageError)")
         }
@@ -130,8 +152,10 @@ class GarageErrorTests: XCTestCase {
         let garageError = GarageClient.GarageErrorFromAPIError(APIError)
 
         switch garageError {
-        case .InternalServerError(let errorResponse):
+        case .InternalServerError(let object, let errorResponse):
             XCTAssertEqual(response, errorResponse)
+            XCTAssertEqual(object["status_code"], 500)
+            XCTAssertEqual(object["error"], "error message")
         default:
             XCTFail("Unexpected error type \(garageError)")
         }
@@ -143,8 +167,10 @@ class GarageErrorTests: XCTestCase {
         let garageError = GarageClient.GarageErrorFromAPIError(APIError)
 
         switch garageError {
-        case .ServiceUnavailable(let errorResponse):
+        case .ServiceUnavailable(let object, let errorResponse):
             XCTAssertEqual(response, errorResponse)
+            XCTAssertEqual(object["status_code"], 503)
+            XCTAssertEqual(object["error"], "error message")
         default:
             XCTFail("Unexpected error type \(garageError)")
         }
@@ -156,8 +182,10 @@ class GarageErrorTests: XCTestCase {
         let garageError = GarageClient.GarageErrorFromAPIError(APIError)
 
         switch garageError {
-        case .ClientError(let errorResponse):
+        case .ClientError(let object, let errorResponse):
             XCTAssertEqual(response, errorResponse)
+            XCTAssertEqual(object["status_code"], 499)
+            XCTAssertEqual(object["error"], "error message")
         default:
             XCTFail("Unexpected error type \(garageError)")
         }
@@ -169,8 +197,10 @@ class GarageErrorTests: XCTestCase {
         let garageError = GarageClient.GarageErrorFromAPIError(APIError)
 
         switch garageError {
-        case .ServerError(let errorResponse):
+        case .ServerError(let object, let errorResponse):
             XCTAssertEqual(response, errorResponse)
+            XCTAssertEqual(object["status_code"], 599)
+            XCTAssertEqual(object["error"], "error message")
         default:
             XCTFail("Unexpected error type \(garageError)")
         }
