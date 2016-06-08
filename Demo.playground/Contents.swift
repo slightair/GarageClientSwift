@@ -33,7 +33,7 @@ struct GetUserRequest: GarageRequestType {
         return "/users"
     }
 
-    var parameters: [String : AnyObject] {
+    var parameters: AnyObject? {
         return [
             "per_page": 1,
             "page": 2,

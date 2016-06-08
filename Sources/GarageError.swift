@@ -1,11 +1,6 @@
 import Foundation
 
 public enum GarageError: ErrorType {
-    case ConfigurationError(ErrorType)
-    case ConnectionError(NSError)
-    case RequestError(ErrorType)
-    case InvalidResponse(ErrorType)
-
     case BadRequest(AnyObject, NSHTTPURLResponse)
     case Unauthorized(AnyObject, NSHTTPURLResponse)
     case Forbidden(AnyObject, NSHTTPURLResponse)
@@ -18,6 +13,4 @@ public enum GarageError: ErrorType {
     case ServiceUnavailable(AnyObject, NSHTTPURLResponse)
     case ClientError(AnyObject, NSHTTPURLResponse)
     case ServerError(AnyObject, NSHTTPURLResponse)
-
-    case Unknown(ErrorType)
 }

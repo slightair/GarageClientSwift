@@ -10,10 +10,8 @@ public class GarageClient {
     public init(configuration: GarageConfigurationType) {
         self.configuration = configuration
 
-        let urlSession = NSURLSession(configuration: sessionConfiguration(),
-                                      delegate: URLSessionDelegate(),
-                                      delegateQueue: nil)
-        self.session = Session(URLSession: urlSession)
+        let adapter = NSURLSessionAdapter(configuration: sessionConfiguration())
+        self.session = Session(adapter: adapter)
     }
 
     func sessionConfiguration() -> NSURLSessionConfiguration {
@@ -27,77 +25,28 @@ public class GarageClient {
     }
 
     public func sendRequest<R: GarageRequestType, D: Decodable where R.Resource == D>
-        (request: R, handler: (Result<GarageResponse<D>, GarageError>) -> Void = {result in}) -> NSURLSessionDataTask? {
+        (request: R, handler: (Result<GarageResponse<D>, SessionTaskError>) -> Void = { result in }) -> SessionTaskType? {
         let resourceRequest = RequestBuilder.buildRequest(request, configuration: configuration)
         return session.sendRequest(resourceRequest) { result in
             switch result {
             case .Success(let result):
-                handler(Result.Success(result))
+                handler(.Success(result))
             case .Failure(let error):
-                handler(Result.Failure(GarageClient.GarageErrorFromAPIError(error)))
+                handler(.Failure(error))
             }
         }
     }
 
     public func sendRequest<R: GarageRequestType, D: Decodable where R.Resource: CollectionType, R.Resource.Generator.Element == D>
-        (request: R, handler: (Result<GarageResponse<[D]>, GarageError>) -> Void = {result in}) -> NSURLSessionDataTask? {
+        (request: R, handler: (Result<GarageResponse<[D]>, SessionTaskError>) -> Void = { result in }) -> SessionTaskType? {
         let resourceRequest = RequestBuilder.buildRequest(request, configuration: configuration)
         return session.sendRequest(resourceRequest) { result in
             switch result {
             case .Success(let result):
-                handler(Result.Success(result))
+                handler(.Success(result))
             case .Failure(let error):
-                handler(Result.Failure(GarageClient.GarageErrorFromAPIError(error)))
+                handler(.Failure(error))
             }
-        }
-    }
-
-    // swiftlint:disable:next cyclomatic_complexity
-    static func GarageErrorFromAPIError(baseError: APIError) -> GarageError {
-        switch baseError {
-        case .ConnectionError(let error):
-            return .ConnectionError(error)
-        case .InvalidBaseURL, .ConfigurationError:
-            return .ConfigurationError(baseError)
-        case .RequestBodySerializationError:
-            return .RequestError(baseError)
-        case .ResponseBodyDeserializationError, .InvalidResponseStructure, .NotHTTPURLResponse:
-            return .InvalidResponse(baseError)
-        case .UnacceptableStatusCode(let statusCode, let error as NSError):
-            guard let object = error.userInfo["object"], urlResponse = error.userInfo["URLResponse"] as? NSHTTPURLResponse else {
-                return .Unknown(baseError)
-            }
-
-            switch statusCode {
-            case 400:
-                return .BadRequest(object, urlResponse)
-            case 401:
-                return .Unauthorized(object, urlResponse)
-            case 403:
-                return .Forbidden(object, urlResponse)
-            case 404:
-                return .NotFound(object, urlResponse)
-            case 406:
-                return .NotAcceptable(object, urlResponse)
-            case 409:
-                return .Conflict(object, urlResponse)
-            case 415:
-                return .UnsupportedMediaType(object, urlResponse)
-            case 422:
-                return .UnprocessableEntity(object, urlResponse)
-            case 500:
-                return .InternalServerError(object, urlResponse)
-            case 503:
-                return .ServiceUnavailable(object, urlResponse)
-            case 400..<500:
-                return .ClientError(object, urlResponse)
-            case 500..<600:
-                return .ServerError(object, urlResponse)
-            default:
-                return .Unknown(baseError)
-            }
-        default:
-            return .Unknown(baseError)
         }
     }
 }

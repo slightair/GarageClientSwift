@@ -21,20 +21,50 @@ extension ResourceRequest {
         return pathPrefix.stringByAppendingPathComponent(baseRequest.path)
     }
 
-    var parameters: [String: AnyObject] {
+    var parameters: AnyObject? {
         return baseRequest.parameters
     }
 
-    var objectParameters: AnyObject {
-        return baseRequest.objectParameters
+    var headerFields: [String: String] {
+        return baseRequest.headerFields
     }
 
-    var HTTPHeaderFields: [String: String] {
-        return baseRequest.HTTPHeaderFields
+    func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+        return try baseRequest.interceptURLRequest(URLRequest)
     }
 
-    func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-        return try baseRequest.configureURLRequest(URLRequest)
+    func interceptObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> AnyObject {
+        guard (200..<300).contains(URLResponse.statusCode) else {
+            switch URLResponse.statusCode {
+            case 400:
+                throw GarageError.BadRequest(object, URLResponse)
+            case 401:
+                throw GarageError.Unauthorized(object, URLResponse)
+            case 403:
+                throw GarageError.Forbidden(object, URLResponse)
+            case 404:
+                throw GarageError.NotFound(object, URLResponse)
+            case 406:
+                throw GarageError.NotAcceptable(object, URLResponse)
+            case 409:
+                throw GarageError.Conflict(object, URLResponse)
+            case 415:
+                throw GarageError.UnsupportedMediaType(object, URLResponse)
+            case 422:
+                throw GarageError.UnprocessableEntity(object, URLResponse)
+            case 500:
+                throw GarageError.InternalServerError(object, URLResponse)
+            case 503:
+                throw GarageError.ServiceUnavailable(object, URLResponse)
+            case 400..<500:
+                throw GarageError.ClientError(object, URLResponse)
+            case 500..<600:
+                throw GarageError.ServerError(object, URLResponse)
+            default:
+                throw ResponseError.UnacceptableStatusCode(URLResponse.statusCode)
+            }
+        }
+        return object
     }
 
     func headerParameters(response: NSHTTPURLResponse) -> (totalCount: Int?, linkHeader: LinkHeader?) {
@@ -62,9 +92,9 @@ struct SingleResourceRequest<R: GarageRequestType, D: Decodable where R.Resource
     let baseRequest: GarageRequestParameterContainer
     let configuration: GarageConfigurationType
 
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Response {
         guard let resource: D = try? decodeValue(object) else {
-            return nil
+            throw ResponseError.UnexpectedObject(object)
         }
 
         let parameters = headerParameters(URLResponse)
@@ -78,9 +108,9 @@ struct MultipleResourceRequest<R: GarageRequestType, D: Decodable where R.Resour
     let baseRequest: GarageRequestParameterContainer
     let configuration: GarageConfigurationType
 
-    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Response? {
+    func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Response {
         guard let resource: [D] = try? decodeArray(object) else {
-            return nil
+            throw ResponseError.UnexpectedObject(object)
         }
 
         let parameters = headerParameters(URLResponse)
