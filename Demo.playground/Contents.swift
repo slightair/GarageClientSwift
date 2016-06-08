@@ -59,8 +59,8 @@ garageClient.sendRequest(GetUserRequest()) { result in
     case .Success(let response):
         debugPrint(response)
 
-        let user = response.resource
-        debugPrint(user)
+        let users = response.resource
+        debugPrint(users)
     case .Failure(let error):
         debugPrint(error)
     }
