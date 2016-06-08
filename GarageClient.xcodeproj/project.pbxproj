@@ -40,11 +40,8 @@
 		570B0BB81CCA468900F7C0AF /* GarageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B0A7B1CC7BD1A00F7C0AF /* GarageResponse.swift */; };
 		570B0BB91CCA468900F7C0AF /* LinkHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B0A7C1CC7BD1A00F7C0AF /* LinkHeader.swift */; };
 		570B0BBA1CCA468900F7C0AF /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B0A7D1CC7BD1A00F7C0AF /* RequestBuilder.swift */; };
-		570B0BBB1CCA469300F7C0AF /* GarageErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B0A731CC7BBAF00F7C0AF /* GarageErrorTests.swift */; };
 		570B0BBC1CCA469300F7C0AF /* LinkHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B0A741CC7BBAF00F7C0AF /* LinkHeaderTests.swift */; };
-		570B0BBD1CCA469400F7C0AF /* GarageErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B0A731CC7BBAF00F7C0AF /* GarageErrorTests.swift */; };
 		570B0BBE1CCA469400F7C0AF /* LinkHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B0A741CC7BBAF00F7C0AF /* LinkHeaderTests.swift */; };
-		570B0BBF1CCA469500F7C0AF /* GarageErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B0A731CC7BBAF00F7C0AF /* GarageErrorTests.swift */; };
 		570B0BC01CCA469500F7C0AF /* LinkHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B0A741CC7BBAF00F7C0AF /* LinkHeaderTests.swift */; };
 		573B24811CCA4E52003860F5 /* GarageClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570B0B831CCA440900F7C0AF /* GarageClient.framework */; };
 		573B24831CCA4EB5003860F5 /* GarageClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570B0B3E1CCA41DD00F7C0AF /* GarageClient.framework */; };
@@ -149,7 +146,6 @@
 /* Begin PBXFileReference section */
 		570B0A5A1CC7B84E00F7C0AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		570B0A661CC7B84E00F7C0AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		570B0A731CC7BBAF00F7C0AF /* GarageErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageErrorTests.swift; sourceTree = "<group>"; };
 		570B0A741CC7BBAF00F7C0AF /* LinkHeaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkHeaderTests.swift; sourceTree = "<group>"; };
 		570B0A771CC7BD1A00F7C0AF /* GarageClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageClient.swift; sourceTree = "<group>"; };
 		570B0A781CC7BD1A00F7C0AF /* GarageConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GarageConfiguration.swift; sourceTree = "<group>"; };
@@ -324,7 +320,6 @@
 		570B0A711CC7BA8000F7C0AF /* GarageClient */ = {
 			isa = PBXGroup;
 			children = (
-				570B0A731CC7BBAF00F7C0AF /* GarageErrorTests.swift */,
 				570B0A741CC7BBAF00F7C0AF /* LinkHeaderTests.swift */,
 				570B0A701CC7BA1900F7C0AF /* Supporting Files */,
 			);
@@ -645,7 +640,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				570B0BBC1CCA469300F7C0AF /* LinkHeaderTests.swift in Sources */,
-				570B0BBB1CCA469300F7C0AF /* GarageErrorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,7 +676,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				570B0BC01CCA469500F7C0AF /* LinkHeaderTests.swift in Sources */,
-				570B0BBF1CCA469500F7C0AF /* GarageErrorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,7 +698,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				570B0BBE1CCA469400F7C0AF /* LinkHeaderTests.swift in Sources */,
-				570B0BBD1CCA469400F7C0AF /* GarageErrorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
