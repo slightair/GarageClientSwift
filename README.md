@@ -14,7 +14,7 @@ Swift client library for the [Garage](https://github.com/cookpad/garage) applica
 
 ### Carthage
 
-1. Add `github "slightair/GarageClientSwift" ~> 1.0.0` to `Cartfile`
+1. Add `github "slightair/GarageClientSwift" ~> 1.1.0` to `Cartfile`
 1. Run `carthage update`
 
 ## Usage
