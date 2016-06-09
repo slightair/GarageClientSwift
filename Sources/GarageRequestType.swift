@@ -4,14 +4,19 @@ import APIKit
 public protocol GarageRequestParameterContainer {
     var method: HTTPMethod { get }
     var path: String { get }
-    var parameters: AnyObject? { get }
+    var queryParameters: [String: AnyObject]? { get }
+    var bodyParameters: BodyParametersType? { get }
     var headerFields: [String: String] { get }
 
     func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest
 }
 
 public extension GarageRequestParameterContainer {
-    public var parameters: AnyObject? {
+    public var queryParameters: [String: AnyObject]? {
+        return nil
+    }
+
+    public var bodyParameters: BodyParametersType? {
         return nil
     }
 

@@ -21,8 +21,12 @@ extension ResourceRequest {
         return pathPrefix.stringByAppendingPathComponent(baseRequest.path)
     }
 
-    var parameters: AnyObject? {
-        return baseRequest.parameters
+    var queryParameters: [String: AnyObject]? {
+        return baseRequest.queryParameters
+    }
+
+    var bodyParameters: BodyParametersType? {
+        return baseRequest.bodyParameters
     }
 
     var headerFields: [String: String] {
