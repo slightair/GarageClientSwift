@@ -40,7 +40,7 @@ struct User: Decodable {
 ### 2. Define Garage request
 
 ```swift
-struct GetUserRequest: GarageRequestType {
+struct GetUsersRequest: GarageRequestType {
     typealias Resource = [User]
 
     var method: HTTPMethod {
@@ -78,7 +78,7 @@ let configuration = Configuration(
 
 ```swift
 let garageClient = GarageClient(configuration: configuration)
-garageClient.sendRequest(GetUserRequest()) { result in
+garageClient.sendRequest(GetUsersRequest()) { result in
     switch result {
     case .Success(let response):
         debugPrint(response)
