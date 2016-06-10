@@ -13,10 +13,10 @@ struct User: Decodable {
     let email: String
 
     static func decode(e: Extractor) throws -> User {
-        return User(
-            id: try e <| "id",
-            name: try e <| "name",
-            email: try e <| "email"
+        return try User(
+            id: e <| "id",
+            name: e <| "name",
+            email: e <| "email"
         )
     }
 }
