@@ -10,7 +10,7 @@ open class GarageClient {
     public init(configuration: GarageConfigurationType) {
         self.configuration = configuration
 
-        let adapter = NSURLSessionAdapter(configuration: sessionConfiguration())
+        let adapter = URLSessionAdapter(configuration: sessionConfiguration())
         self.session = Session(adapter: adapter)
     }
 
@@ -26,26 +26,26 @@ open class GarageClient {
 
     open func sendRequest<R: GarageRequestType, D: Decodable>
         (_ request: R, handler: @escaping (Result<GarageResponse<D>, SessionTaskError>) -> Void = { result in }) -> SessionTaskType? where R.Resource == D {
-        let resourceRequest = RequestBuilder.buildRequest(request, configuration: configuration)
+        let resourceRequest = RequestBuilder.buildRequest(from: request, configuration: configuration)
         return session.sendRequest(resourceRequest) { result in
             switch result {
-            case .Success(let result):
-                handler(.Success(result))
-            case .Failure(let error):
-                handler(.Failure(error))
+            case .success(let result):
+                handler(.success(result))
+            case .failure(let error):
+                handler(.failure(error))
             }
         }
     }
 
     open func sendRequest<R: GarageRequestType, D: Decodable>
         (_ request: R, handler: @escaping (Result<GarageResponse<[D]>, SessionTaskError>) -> Void = { result in }) -> SessionTaskType? where R.Resource: Collection, R.Resource.Iterator.Element == D {
-        let resourceRequest = RequestBuilder.buildRequest(request, configuration: configuration)
+        let resourceRequest = RequestBuilder.buildRequest(from: request, configuration: configuration)
         return session.sendRequest(resourceRequest) { result in
             switch result {
-            case .Success(let result):
-                handler(.Success(result))
-            case .Failure(let error):
-                handler(.Failure(error))
+            case .success(let result):
+                handler(.success(result))
+            case .failure(let error):
+                handler(.failure(error))
             }
         }
     }

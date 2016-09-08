@@ -12,7 +12,7 @@ public struct LinkHeader {
                 return nil
             }
 
-            func trimString(_ string: String) -> String {
+            func trim(_ string: String) -> String {
                 guard string.characters.count > 2 else {
                     return ""
                 }
@@ -24,11 +24,11 @@ public struct LinkHeader {
                 guard pair.count == 2 else {
                     return nil
                 }
-                return trimString(pair.last!)
+                return trim(pair.last!)
             }
 
             let uriString = attributes[0]
-            guard let uri = URL(string: trimString(uriString)) else {
+            guard let uri = URL(string: trim(uriString)) else {
                 return nil
             }
             self.uri = uri

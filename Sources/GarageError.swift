@@ -1,16 +1,16 @@
 import Foundation
 
 public enum GarageError: Error {
-    case badRequest(AnyObject, HTTPURLResponse)
-    case unauthorized(AnyObject, HTTPURLResponse)
-    case forbidden(AnyObject, HTTPURLResponse)
-    case notFound(AnyObject, HTTPURLResponse)
-    case notAcceptable(AnyObject, HTTPURLResponse)
-    case conflict(AnyObject, HTTPURLResponse)
-    case unsupportedMediaType(AnyObject, HTTPURLResponse)
-    case unprocessableEntity(AnyObject, HTTPURLResponse)
-    case internalServerError(AnyObject, HTTPURLResponse)
-    case serviceUnavailable(AnyObject, HTTPURLResponse)
-    case clientError(AnyObject, HTTPURLResponse)
-    case serverError(AnyObject, HTTPURLResponse)
+    case badRequest(Any, HTTPURLResponse)
+    case unauthorized(Any, HTTPURLResponse)
+    case forbidden(Any, HTTPURLResponse)
+    case notFound(Any, HTTPURLResponse)
+    case notAcceptable(Any, HTTPURLResponse)
+    case conflict(Any, HTTPURLResponse)
+    case unsupportedMediaType(Any, HTTPURLResponse)
+    case unprocessableEntity(Any, HTTPURLResponse)
+    case internalServerError(Any, HTTPURLResponse)
+    case serviceUnavailable(Any, HTTPURLResponse)
+    case clientError(Any, HTTPURLResponse)
+    case serverError(Any, HTTPURLResponse)
 }

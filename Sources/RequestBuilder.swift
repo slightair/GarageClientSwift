@@ -8,7 +8,7 @@ protocol ResourceRequest: RequestType {
 }
 
 extension ResourceRequest {
-    var baseURL: URL {
+    var baseUrl: URL {
         return configuration.endpoint as URL
     }
 
@@ -21,7 +21,7 @@ extension ResourceRequest {
         return pathPrefix.appendingPathComponent(baseRequest.path)
     }
 
-    var queryParameters: [String: AnyObject]? {
+    var queryParameters: [String: Any]? {
         return baseRequest.queryParameters
     }
 
@@ -33,45 +33,45 @@ extension ResourceRequest {
         return baseRequest.headerFields
     }
 
-    func interceptURLRequest(_ URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-        return try baseRequest.interceptURLRequest(URLRequest)
+    func intercept(urlRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+        return try baseRequest.intercept(urlRequest: urlRequest)
     }
 
-    func interceptObject(_ object: AnyObject, URLResponse: HTTPURLResponse) throws -> AnyObject {
-        guard (200..<300).contains(URLResponse.statusCode) else {
-            switch URLResponse.statusCode {
+    func intercept(object: Any, urlResponse: HTTPURLResponse) throws -> Any {
+        guard (200..<300).contains(urlResponse.statusCode) else {
+            switch urlResponse.statusCode {
             case 400:
-                throw GarageError.badRequest(object, URLResponse)
+                throw GarageError.badRequest(object, urlResponse)
             case 401:
-                throw GarageError.unauthorized(object, URLResponse)
+                throw GarageError.unauthorized(object, urlResponse)
             case 403:
-                throw GarageError.forbidden(object, URLResponse)
+                throw GarageError.forbidden(object, urlResponse)
             case 404:
-                throw GarageError.notFound(object, URLResponse)
+                throw GarageError.notFound(object, urlResponse)
             case 406:
-                throw GarageError.notAcceptable(object, URLResponse)
+                throw GarageError.notAcceptable(object, urlResponse)
             case 409:
-                throw GarageError.conflict(object, URLResponse)
+                throw GarageError.conflict(object, urlResponse)
             case 415:
-                throw GarageError.unsupportedMediaType(object, URLResponse)
+                throw GarageError.unsupportedMediaType(object, urlResponse)
             case 422:
-                throw GarageError.unprocessableEntity(object, URLResponse)
+                throw GarageError.unprocessableEntity(object, urlResponse)
             case 500:
-                throw GarageError.internalServerError(object, URLResponse)
+                throw GarageError.internalServerError(object, urlResponse)
             case 503:
-                throw GarageError.serviceUnavailable(object, URLResponse)
+                throw GarageError.serviceUnavailable(object, urlResponse)
             case 400..<500:
-                throw GarageError.clientError(object, URLResponse)
+                throw GarageError.clientError(object, urlResponse)
             case 500..<600:
-                throw GarageError.serverError(object, URLResponse)
+                throw GarageError.serverError(object, urlResponse)
             default:
-                throw ResponseError.UnacceptableStatusCode(URLResponse.statusCode)
+                throw ResponseError.unacceptableStatusCode(urlResponse.statusCode)
             }
         }
         return object
     }
 
-    func headerParameters(_ response: HTTPURLResponse) -> (totalCount: Int?, linkHeader: LinkHeader?) {
+    func headerParameters(from response: HTTPURLResponse) -> (totalCount: Int?, linkHeader: LinkHeader?) {
         let totalCount: Int?
         if let totalCountString = response.allHeaderFields["X-List-Totalcount"] as? String {
             totalCount = Int(totalCountString)
@@ -96,12 +96,12 @@ struct SingleResourceRequest<R: GarageRequestType, D: Decodable>: ResourceReques
     let baseRequest: GarageRequestParameterContainer
     let configuration: GarageConfigurationType
 
-    func responseFromObject(_ object: AnyObject, URLResponse: HTTPURLResponse) throws -> Response {
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
         guard let resource: D = try? decodeValue(object) else {
-            throw ResponseError.UnexpectedObject(object)
+            throw ResponseError.unexpectedObject(object)
         }
 
-        let parameters = headerParameters(URLResponse)
+        let parameters = headerParameters(from: urlResponse)
         return GarageResponse(resource: resource, totalCount: parameters.totalCount, linkHeader: parameters.linkHeader)
     }
 }
@@ -112,24 +112,24 @@ struct MultipleResourceRequest<R: GarageRequestType, D: Decodable>: ResourceRequ
     let baseRequest: GarageRequestParameterContainer
     let configuration: GarageConfigurationType
 
-    func responseFromObject(_ object: AnyObject, URLResponse: HTTPURLResponse) throws -> Response {
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
         guard let resource: [D] = try! decodeArray(object) as [D]? else {
-            throw ResponseError.UnexpectedObject(object)
+            throw ResponseError.unexpectedObject(object)
         }
 
-        let parameters = headerParameters(URLResponse)
+        let parameters = headerParameters(from: urlResponse)
         return GarageResponse(resource: resource, totalCount: parameters.totalCount, linkHeader: parameters.linkHeader)
     }
 }
 
 struct RequestBuilder {
     static func buildRequest<R: GarageRequestType, D: Decodable>
-        (_ baseRequest: R, configuration: GarageConfigurationType) -> SingleResourceRequest<R, D> where R.Resource == D {
+        (from baseRequest: R, configuration: GarageConfigurationType) -> SingleResourceRequest<R, D> where R.Resource == D {
         return SingleResourceRequest(baseRequest: baseRequest, configuration: configuration)
     }
 
     static func buildRequest<R: GarageRequestType, D: Decodable>
-        (_ baseRequest: R, configuration: GarageConfigurationType) -> MultipleResourceRequest<R, D> where R.Resource: Collection, R.Resource.Iterator.Element == D {
+        (from baseRequest: R, configuration: GarageConfigurationType) -> MultipleResourceRequest<R, D> where R.Resource: Collection, R.Resource.Iterator.Element == D {
         return MultipleResourceRequest(baseRequest: baseRequest, configuration: configuration)
     }
 }

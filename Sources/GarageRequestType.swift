@@ -4,15 +4,15 @@ import APIKit
 public protocol GarageRequestParameterContainer {
     var method: HTTPMethod { get }
     var path: String { get }
-    var queryParameters: [String: AnyObject]? { get }
+    var queryParameters: [String: Any]? { get }
     var bodyParameters: BodyParametersType? { get }
     var headerFields: [String: String] { get }
 
-    func interceptURLRequest(_ URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest
+    func intercept(urlRequest: NSMutableURLRequest) throws -> NSMutableURLRequest
 }
 
 public extension GarageRequestParameterContainer {
-    public var queryParameters: [String: AnyObject]? {
+    public var queryParameters: [String: Any]? {
         return nil
     }
 
@@ -24,8 +24,8 @@ public extension GarageRequestParameterContainer {
         return [:]
     }
 
-    public func interceptURLRequest(_ URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-        return URLRequest
+    public func intercept(urlRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+        return urlRequest
     }
 }
 
