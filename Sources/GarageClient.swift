@@ -3,9 +3,9 @@ import APIKit
 import Result
 import Himotoki
 
-public class GarageClient {
-    public let configuration: GarageConfigurationType
-    public var session: Session!
+open class GarageClient {
+    open let configuration: GarageConfigurationType
+    open var session: Session!
 
     public init(configuration: GarageConfigurationType) {
         self.configuration = configuration
@@ -14,18 +14,18 @@ public class GarageClient {
         self.session = Session(adapter: adapter)
     }
 
-    func sessionConfiguration() -> NSURLSessionConfiguration {
+    func sessionConfiguration() -> URLSessionConfiguration {
         var headers = configuration.headers
         headers["Authorization"] = "Bearer \(configuration.accessToken)"
 
-        let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        sessionConfiguration.HTTPAdditionalHeaders = headers
+        let sessionConfiguration = URLSessionConfiguration.default
+        sessionConfiguration.httpAdditionalHeaders = headers
 
         return sessionConfiguration
     }
 
-    public func sendRequest<R: GarageRequestType, D: Decodable where R.Resource == D>
-        (request: R, handler: (Result<GarageResponse<D>, SessionTaskError>) -> Void = { result in }) -> SessionTaskType? {
+    open func sendRequest<R: GarageRequestType, D: Decodable>
+        (_ request: R, handler: @escaping (Result<GarageResponse<D>, SessionTaskError>) -> Void = { result in }) -> SessionTaskType? where R.Resource == D {
         let resourceRequest = RequestBuilder.buildRequest(request, configuration: configuration)
         return session.sendRequest(resourceRequest) { result in
             switch result {
@@ -37,8 +37,8 @@ public class GarageClient {
         }
     }
 
-    public func sendRequest<R: GarageRequestType, D: Decodable where R.Resource: CollectionType, R.Resource.Generator.Element == D>
-        (request: R, handler: (Result<GarageResponse<[D]>, SessionTaskError>) -> Void = { result in }) -> SessionTaskType? {
+    open func sendRequest<R: GarageRequestType, D: Decodable>
+        (_ request: R, handler: @escaping (Result<GarageResponse<[D]>, SessionTaskError>) -> Void = { result in }) -> SessionTaskType? where R.Resource: Collection, R.Resource.Iterator.Element == D {
         let resourceRequest = RequestBuilder.buildRequest(request, configuration: configuration)
         return session.sendRequest(resourceRequest) { result in
             switch result {

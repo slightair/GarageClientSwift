@@ -8,7 +8,7 @@ public protocol GarageRequestParameterContainer {
     var bodyParameters: BodyParametersType? { get }
     var headerFields: [String: String] { get }
 
-    func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest
+    func interceptURLRequest(_ URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest
 }
 
 public extension GarageRequestParameterContainer {
@@ -24,7 +24,7 @@ public extension GarageRequestParameterContainer {
         return [:]
     }
 
-    public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+    public func interceptURLRequest(_ URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
         return URLRequest
     }
 }

@@ -1,7 +1,7 @@
 import Foundation
 
 public protocol GarageConfigurationType {
-    var endpoint: NSURL { get }
+    var endpoint: URL { get }
     var accessToken: String { get }
     var headers: [String: String] { get }
     var pathPrefix: String { get }
@@ -12,7 +12,7 @@ public extension GarageConfigurationType {
     public var defaultUserAgent: String {
         let clientName = "GarageClientSwift"
 
-        if let info = NSBundle.mainBundle().infoDictionary {
+        if let info = Bundle.main.infoDictionary {
             let executable = info[kCFBundleExecutableKey as String] as? String ?? "Unknown"
             let version = info[kCFBundleVersionKey as String] as? String ?? "Unknown"
 
