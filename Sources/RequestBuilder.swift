@@ -2,13 +2,13 @@ import Foundation
 import APIKit
 import Himotoki
 
-protocol ResourceRequest: RequestType {
+protocol ResourceRequest: Request {
     var baseRequest: GarageRequestParameterContainer { get }
     var configuration: GarageConfigurationType { get }
 }
 
 extension ResourceRequest {
-    var baseUrl: URL {
+    var baseURL: URL {
         return configuration.endpoint as URL
     }
 
@@ -25,7 +25,7 @@ extension ResourceRequest {
         return baseRequest.queryParameters
     }
 
-    var bodyParameters: BodyParametersType? {
+    var bodyParameters: BodyParameters? {
         return baseRequest.bodyParameters
     }
 

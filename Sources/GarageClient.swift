@@ -25,9 +25,9 @@ open class GarageClient {
     }
 
     open func sendRequest<R: GarageRequestType, D: Decodable>
-        (_ request: R, handler: @escaping (Result<GarageResponse<D>, SessionTaskError>) -> Void = { result in }) -> SessionTaskType? where R.Resource == D {
+        (_ request: R, handler: @escaping (Result<GarageResponse<D>, SessionTaskError>) -> Void = { result in }) -> SessionTask? where R.Resource == D {
         let resourceRequest = RequestBuilder.buildRequest(from: request, configuration: configuration)
-        return session.sendRequest(resourceRequest) { result in
+        return session.send(resourceRequest) { result in
             switch result {
             case .success(let result):
                 handler(.success(result))
@@ -38,9 +38,9 @@ open class GarageClient {
     }
 
     open func sendRequest<R: GarageRequestType, D: Decodable>
-        (_ request: R, handler: @escaping (Result<GarageResponse<[D]>, SessionTaskError>) -> Void = { result in }) -> SessionTaskType? where R.Resource: Collection, R.Resource.Iterator.Element == D {
+        (_ request: R, handler: @escaping (Result<GarageResponse<[D]>, SessionTaskError>) -> Void = { result in }) -> SessionTask? where R.Resource: Collection, R.Resource.Iterator.Element == D {
         let resourceRequest = RequestBuilder.buildRequest(from: request, configuration: configuration)
-        return session.sendRequest(resourceRequest) { result in
+        return session.send(resourceRequest) { result in
             switch result {
             case .success(let result):
                 handler(.success(result))

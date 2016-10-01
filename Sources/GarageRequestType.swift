@@ -5,7 +5,7 @@ public protocol GarageRequestParameterContainer {
     var method: HTTPMethod { get }
     var path: String { get }
     var queryParameters: [String: Any]? { get }
-    var bodyParameters: BodyParametersType? { get }
+    var bodyParameters: BodyParameters? { get }
     var headerFields: [String: String] { get }
 
     func intercept(urlRequest: NSMutableURLRequest) throws -> NSMutableURLRequest
@@ -16,7 +16,7 @@ public extension GarageRequestParameterContainer {
         return nil
     }
 
-    public var bodyParameters: BodyParametersType? {
+    public var bodyParameters: BodyParameters? {
         return nil
     }
 
