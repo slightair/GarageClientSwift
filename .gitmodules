@@ -6,4 +6,4 @@
 	url = https://github.com/ikesyo/Himotoki.git
 [submodule "Carthage/Checkouts/APIKit"]
 	path = Carthage/Checkouts/APIKit
-	url = https://github.com/slightair/APIKit.git
+	url = https://github.com/ishkawa/APIKit.git
