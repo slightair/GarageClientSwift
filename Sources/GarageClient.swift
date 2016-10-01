@@ -4,10 +4,10 @@ import Result
 import Himotoki
 
 open class GarageClient {
-    open let configuration: GarageConfigurationType
+    open let configuration: GarageConfiguration
     open var session: Session!
 
-    public init(configuration: GarageConfigurationType) {
+    public init(configuration: GarageConfiguration) {
         self.configuration = configuration
 
         let adapter = URLSessionAdapter(configuration: sessionConfiguration())
@@ -24,7 +24,7 @@ open class GarageClient {
         return sessionConfiguration
     }
 
-    open func sendRequest<R: GarageRequestType, D: Decodable>
+    open func sendRequest<R: GarageRequest, D: Decodable>
         (_ request: R, handler: @escaping (Result<GarageResponse<D>, SessionTaskError>) -> Void = { result in }) -> SessionTask? where R.Resource == D {
         let resourceRequest = RequestBuilder.buildRequest(from: request, configuration: configuration)
         return session.send(resourceRequest) { result in
@@ -37,7 +37,7 @@ open class GarageClient {
         }
     }
 
-    open func sendRequest<R: GarageRequestType, D: Decodable>
+    open func sendRequest<R: GarageRequest, D: Decodable>
         (_ request: R, handler: @escaping (Result<GarageResponse<[D]>, SessionTaskError>) -> Void = { result in }) -> SessionTask? where R.Resource: Collection, R.Resource.Iterator.Element == D {
         let resourceRequest = RequestBuilder.buildRequest(from: request, configuration: configuration)
         return session.send(resourceRequest) { result in

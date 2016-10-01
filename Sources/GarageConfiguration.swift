@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol GarageConfigurationType {
+public protocol GarageConfiguration {
     var endpoint: URL { get }
     var accessToken: String { get }
     var headers: [String: String] { get }
@@ -8,7 +8,7 @@ public protocol GarageConfigurationType {
     var verbose: Bool { get }
 }
 
-public extension GarageConfigurationType {
+public extension GarageConfiguration {
     public var defaultUserAgent: String {
         let clientName = "GarageClientSwift"
 

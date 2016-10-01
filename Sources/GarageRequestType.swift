@@ -29,6 +29,6 @@ public extension GarageRequestParameterContainer {
     }
 }
 
-public protocol GarageRequestType: GarageRequestParameterContainer {
+public protocol GarageRequest: GarageRequestParameterContainer {
     associatedtype Resource
 }
