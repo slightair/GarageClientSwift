@@ -1,10 +1,10 @@
-import XCPlayground
+import PlaygroundSupport
 import UIKit
 import APIKit
 import Himotoki
 import GarageClient
 
-XCPlaygroundPage.currentPage.needsIndefiniteExecution = true
+PlaygroundPage.current.needsIndefiniteExecution = true
 
 //: Step 1: Define Garage resource decodable model
 struct User: Decodable {
@@ -22,7 +22,7 @@ struct User: Decodable {
 }
 
 //: Step 2: Define Garage request settings
-struct GetUsersRequest: GarageRequestType {
+struct GetUsersRequest: GarageRequest {
     typealias Resource = [User]
 
     var method: HTTPMethod {
@@ -42,7 +42,7 @@ struct GetUsersRequest: GarageRequestType {
 }
 
 //: Step 3: Define Garage configuration
-struct Configuration: GarageConfigurationType {
+struct Configuration: GarageConfiguration {
     let endpoint: URL
     let accessToken: String
 }
