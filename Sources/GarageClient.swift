@@ -3,49 +3,49 @@ import APIKit
 import Result
 import Himotoki
 
-public class GarageClient {
-    public let configuration: GarageConfigurationType
-    public var session: Session!
+open class GarageClient {
+    open let configuration: GarageConfiguration
+    open var session: Session!
 
-    public init(configuration: GarageConfigurationType) {
+    public init(configuration: GarageConfiguration) {
         self.configuration = configuration
 
-        let adapter = NSURLSessionAdapter(configuration: sessionConfiguration())
+        let adapter = URLSessionAdapter(configuration: sessionConfiguration())
         self.session = Session(adapter: adapter)
     }
 
-    func sessionConfiguration() -> NSURLSessionConfiguration {
+    func sessionConfiguration() -> URLSessionConfiguration {
         var headers = configuration.headers
         headers["Authorization"] = "Bearer \(configuration.accessToken)"
 
-        let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        sessionConfiguration.HTTPAdditionalHeaders = headers
+        let sessionConfiguration = URLSessionConfiguration.default
+        sessionConfiguration.httpAdditionalHeaders = headers
 
         return sessionConfiguration
     }
 
-    public func sendRequest<R: GarageRequestType, D: Decodable where R.Resource == D>
-        (request: R, handler: (Result<GarageResponse<D>, SessionTaskError>) -> Void = { result in }) -> SessionTaskType? {
-        let resourceRequest = RequestBuilder.buildRequest(request, configuration: configuration)
-        return session.sendRequest(resourceRequest) { result in
+    open func sendRequest<R: GarageRequest, D: Decodable>
+        (_ request: R, handler: @escaping (Result<GarageResponse<D>, SessionTaskError>) -> Void = { result in }) -> SessionTask? where R.Resource == D {
+        let resourceRequest = RequestBuilder.buildRequest(from: request, configuration: configuration)
+        return session.send(resourceRequest) { result in
             switch result {
-            case .Success(let result):
-                handler(.Success(result))
-            case .Failure(let error):
-                handler(.Failure(error))
+            case .success(let result):
+                handler(.success(result))
+            case .failure(let error):
+                handler(.failure(error))
             }
         }
     }
 
-    public func sendRequest<R: GarageRequestType, D: Decodable where R.Resource: CollectionType, R.Resource.Generator.Element == D>
-        (request: R, handler: (Result<GarageResponse<[D]>, SessionTaskError>) -> Void = { result in }) -> SessionTaskType? {
-        let resourceRequest = RequestBuilder.buildRequest(request, configuration: configuration)
-        return session.sendRequest(resourceRequest) { result in
+    open func sendRequest<R: GarageRequest, D: Decodable>
+        (_ request: R, handler: @escaping (Result<GarageResponse<[D]>, SessionTaskError>) -> Void = { result in }) -> SessionTask? where R.Resource: Collection, R.Resource.Iterator.Element == D {
+        let resourceRequest = RequestBuilder.buildRequest(from: request, configuration: configuration)
+        return session.send(resourceRequest) { result in
             switch result {
-            case .Success(let result):
-                handler(.Success(result))
-            case .Failure(let error):
-                handler(.Failure(error))
+            case .success(let result):
+                handler(.success(result))
+            case .failure(let error):
+                handler(.failure(error))
             }
         }
     }

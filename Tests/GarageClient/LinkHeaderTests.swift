@@ -22,7 +22,7 @@ class LinkHeaderTests: XCTestCase {
             return
         }
 
-        XCTAssertEqual(first.uri, NSURL(string: "/v1/users?page=1&per_page=1")!)
+        XCTAssertEqual(first.uri, URL(string: "/v1/users?page=1&per_page=1")!)
         XCTAssertEqual(first.rel, "first")
         XCTAssertEqual(first.page, 1)
     }
@@ -36,7 +36,7 @@ class LinkHeaderTests: XCTestCase {
             return
         }
 
-        XCTAssertEqual(prev.uri, NSURL(string: "/v1/users?page=3&per_page=1")!)
+        XCTAssertEqual(prev.uri, URL(string: "/v1/users?page=3&per_page=1")!)
         XCTAssertEqual(prev.rel, "prev")
         XCTAssertEqual(prev.page, 3)
     }
@@ -50,7 +50,7 @@ class LinkHeaderTests: XCTestCase {
             return
         }
 
-        XCTAssertEqual(next.uri, NSURL(string: "/v1/users?page=2&per_page=1")!)
+        XCTAssertEqual(next.uri, URL(string: "/v1/users?page=2&per_page=1")!)
         XCTAssertEqual(next.rel, "next")
         XCTAssertEqual(next.page, 2)
     }
@@ -64,7 +64,7 @@ class LinkHeaderTests: XCTestCase {
             return
         }
 
-        XCTAssertEqual(last.uri, NSURL(string: "/v1/users?page=4&per_page=1")!)
+        XCTAssertEqual(last.uri, URL(string: "/v1/users?page=4&per_page=1")!)
         XCTAssertEqual(last.rel, "last")
         XCTAssertEqual(last.page, 4)
     }
@@ -75,25 +75,25 @@ class LinkHeaderTests: XCTestCase {
 
         let first = linkHeader?.first
         XCTAssertNotNil(first)
-        XCTAssertEqual(first?.uri, NSURL(string: "/v1/users?page=1&per_page=1")!)
+        XCTAssertEqual(first?.uri, URL(string: "/v1/users?page=1&per_page=1")!)
         XCTAssertEqual(first?.rel, "first")
         XCTAssertEqual(first?.page, 1)
 
         let prev = linkHeader?.prev
         XCTAssertNotNil(prev)
-        XCTAssertEqual(prev?.uri, NSURL(string: "/v1/users?page=2&per_page=1")!)
+        XCTAssertEqual(prev?.uri, URL(string: "/v1/users?page=2&per_page=1")!)
         XCTAssertEqual(prev?.rel, "prev")
         XCTAssertEqual(prev?.page, 2)
 
         let next = linkHeader?.next
         XCTAssertNotNil(next)
-        XCTAssertEqual(next?.uri, NSURL(string: "/v1/users?page=4&per_page=1")!)
+        XCTAssertEqual(next?.uri, URL(string: "/v1/users?page=4&per_page=1")!)
         XCTAssertEqual(next?.rel, "next")
         XCTAssertEqual(next?.page, 4)
 
         let last = linkHeader?.last
         XCTAssertNotNil(last)
-        XCTAssertEqual(last?.uri, NSURL(string: "/v1/users?page=4&per_page=1")!)
+        XCTAssertEqual(last?.uri, URL(string: "/v1/users?page=4&per_page=1")!)
         XCTAssertEqual(last?.rel, "last")
         XCTAssertEqual(last?.page, 4)
     }

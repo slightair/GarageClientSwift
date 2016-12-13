@@ -2,33 +2,33 @@ import Foundation
 
 public struct LinkHeader {
     public struct Element {
-        public let uri: NSURL
+        public let uri: URL
         public let rel: String
         public let page: Int
 
         public init?(string: String) {
-            let attributes = string.componentsSeparatedByString("; ")
+            let attributes = string.components(separatedBy: "; ")
             guard attributes.count == 3 else {
                 return nil
             }
 
-            func trimString(string: String) -> String {
+            func trim(_ string: String) -> String {
                 guard string.characters.count > 2 else {
                     return ""
                 }
-                return string[string.startIndex.successor()..<string.endIndex.predecessor()]
+                return string[string.characters.index(after: string.startIndex)..<string.characters.index(before: string.endIndex)]
             }
 
-            func value(field: String) -> String? {
-                let pair = field.componentsSeparatedByString("=")
+            func value(_ field: String) -> String? {
+                let pair = field.components(separatedBy: "=")
                 guard pair.count == 2 else {
                     return nil
                 }
-                return trimString(pair.last!)
+                return trim(pair.last!)
             }
 
             let uriString = attributes[0]
-            guard let uri = NSURL(string: trimString(uriString)) else {
+            guard let uri = URL(string: trim(uriString)) else {
                 return nil
             }
             self.uri = uri
@@ -38,7 +38,7 @@ public struct LinkHeader {
             }
             self.rel = rel
 
-            guard let pageString = value(attributes[2]), page = Int(pageString) else {
+            guard let pageString = value(attributes[2]), let page = Int(pageString) else {
                 return nil
             }
             self.page = page
@@ -67,7 +67,7 @@ public struct LinkHeader {
     }
 
     public init?(string: String) {
-        let elements = string.componentsSeparatedByString(", ").flatMap { Element(string: $0) }
+        let elements = string.components(separatedBy: ", ").flatMap { Element(string: $0) }
 
         first = elements.filter { $0.rel == "first" }.first
         prev = elements.filter { $0.rel == "prev" }.first

@@ -1,10 +1,10 @@
-import XCPlayground
+import PlaygroundSupport
 import UIKit
 import APIKit
 import Himotoki
 import GarageClient
 
-XCPlaygroundPage.currentPage.needsIndefiniteExecution = true
+PlaygroundPage.current.needsIndefiniteExecution = true
 
 //: Step 1: Define Garage resource decodable model
 struct User: Decodable {
@@ -12,7 +12,7 @@ struct User: Decodable {
     let name: String
     let email: String
 
-    static func decode(e: Extractor) throws -> User {
+    static func decode(_ e: Extractor) throws -> User {
         return try User(
             id: e <| "id",
             name: e <| "name",
@@ -22,18 +22,18 @@ struct User: Decodable {
 }
 
 //: Step 2: Define Garage request settings
-struct GetUsersRequest: GarageRequestType {
+struct GetUsersRequest: GarageRequest {
     typealias Resource = [User]
 
     var method: HTTPMethod {
-        return .GET
+        return .get
     }
 
     var path: String {
         return "/users"
     }
 
-    var queryParameters: [String: AnyObject]? {
+    var queryParameters: [String: Any]? {
         return [
             "per_page": 1,
             "page": 2,
@@ -42,13 +42,13 @@ struct GetUsersRequest: GarageRequestType {
 }
 
 //: Step 3: Define Garage configuration
-struct Configuration: GarageConfigurationType {
-    let endpoint: NSURL
+struct Configuration: GarageConfiguration {
+    let endpoint: URL
     let accessToken: String
 }
 
 let configuration = Configuration(
-    endpoint: NSURL(string: "http://localhost:3000")!,
+    endpoint: URL(string: "http://localhost:3000")!,
     accessToken: ""
 )
 
@@ -56,12 +56,12 @@ let configuration = Configuration(
 let garageClient = GarageClient(configuration: configuration)
 garageClient.sendRequest(GetUsersRequest()) { result in
     switch result {
-    case .Success(let response):
+    case .success(let response):
         debugPrint(response)
 
         let users = response.resource
         debugPrint(users)
-    case .Failure(let error):
+    case .failure(let error):
         debugPrint(error)
     }
 }
