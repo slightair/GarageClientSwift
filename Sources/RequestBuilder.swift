@@ -113,7 +113,7 @@ struct MultipleResourceRequest<R: GarageRequest, D: Decodable>: ResourceRequest 
     let configuration: GarageConfiguration
 
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
-        guard let resource: [D] = try! decodeArray(object) as [D]? else {
+        guard let resource: [D] = try? decodeArray(object) else {
             throw ResponseError.unexpectedObject(object)
         }
 
