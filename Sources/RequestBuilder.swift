@@ -97,12 +97,19 @@ struct SingleResourceRequest<R: GarageRequest, D: Decodable>: ResourceRequest wh
     let configuration: GarageConfiguration
 
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
-        guard let resource: D = try? decodeValue(object) else {
-            throw ResponseError.unexpectedObject(object)
-        }
 
         let parameters = headerParameters(from: urlResponse)
-        return GarageResponse(resource: resource, totalCount: parameters.totalCount, linkHeader: parameters.linkHeader)
+        if let rootKeyPath = configuration.rootKeyPath {
+            guard let resource: D = try? decodeValue(object, rootKeyPath: KeyPath(rootKeyPath)) else {
+                throw ResponseError.unexpectedObject(object)
+            }
+            return GarageResponse(resource: resource, totalCount: parameters.totalCount, linkHeader: parameters.linkHeader)
+        } else {
+            guard let resource: D = try? decodeValue(object) else {
+                throw ResponseError.unexpectedObject(object)
+            }
+            return GarageResponse(resource: resource, totalCount: parameters.totalCount, linkHeader: parameters.linkHeader)
+        }
     }
 }
 
@@ -113,12 +120,19 @@ struct MultipleResourceRequest<R: GarageRequest, D: Decodable>: ResourceRequest 
     let configuration: GarageConfiguration
 
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
-        guard let resource: [D] = try! decodeArray(object) as [D]? else {
-            throw ResponseError.unexpectedObject(object)
-        }
 
         let parameters = headerParameters(from: urlResponse)
-        return GarageResponse(resource: resource, totalCount: parameters.totalCount, linkHeader: parameters.linkHeader)
+        if let rootKeyPath = configuration.rootKeyPath {
+            guard let resource: [D] = try! decodeArray(object, rootKeyPath: KeyPath(rootKeyPath)) as [D]? else {
+                throw ResponseError.unexpectedObject(object)
+            }
+            return GarageResponse(resource: resource, totalCount: parameters.totalCount, linkHeader: parameters.linkHeader)
+        } else {
+            guard let resource: [D] = try! decodeArray(object) as [D]? else {
+                throw ResponseError.unexpectedObject(object)
+            }
+            return GarageResponse(resource: resource, totalCount: parameters.totalCount, linkHeader: parameters.linkHeader)
+        }
     }
 }
 
