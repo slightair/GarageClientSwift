@@ -3,7 +3,6 @@ import Foundation
 public protocol GarageConfiguration {
     var endpoint: URL { get }
     var accessToken: String { get }
-    var rootKeyPath: [String]? { get }
     var headers: [String: String] { get }
     var pathPrefix: String { get }
     var verbose: Bool { get }
@@ -21,10 +20,6 @@ public extension GarageConfiguration {
         }
 
         return clientName
-    }
-
-    public var rootKeyPath: [String]? {
-        return nil
     }
 
     public var headers: [String: String] {
