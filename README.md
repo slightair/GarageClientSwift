@@ -4,7 +4,7 @@ Swift client library for the [Garage](https://github.com/cookpad/garage) applica
 
 ## Requirements
 
-- Swift 2.2
+- Swift 3
 - Mac OS 10.10+
 - iOS 8.0+
 - watchOS 2.0+
@@ -14,7 +14,7 @@ Swift client library for the [Garage](https://github.com/cookpad/garage) applica
 
 ### Carthage
 
-1. Add `github "slightair/GarageClientSwift" ~> 1.1.0` to `Cartfile`
+1. Add `github "slightair/GarageClientSwift" ~> 2.0` to `Cartfile`
 1. Run `carthage update`
 
 ## Usage
@@ -27,7 +27,7 @@ struct User: Decodable {
     let name: String
     let email: String
 
-    static func decode(e: Extractor) throws -> User {
+    static func decode(_ e: Extractor) throws -> User {
         return try User(
             id: e <| "id",
             name: e <| "name",
@@ -40,18 +40,18 @@ struct User: Decodable {
 ### 2. Define Garage request
 
 ```swift
-struct GetUsersRequest: GarageRequestType {
+struct GetUsersRequest: GarageRequest {
     typealias Resource = [User]
 
     var method: HTTPMethod {
-        return .GET
+        return .get
     }
 
     var path: String {
         return "/users"
     }
 
-    var queryParameters: [String: AnyObject]? {
+    var queryParameters: [String: Any]? {
         return [
             "per_page": 1,
             "page": 2,
@@ -63,13 +63,13 @@ struct GetUsersRequest: GarageRequestType {
 ### 3. Define Garage configuration
 
 ```swift
-struct Configuration: GarageConfigurationType {
-    let endpoint: NSURL
+struct Configuration: GarageConfiguration {
+    let endpoint: URL
     let accessToken: String
 }
 
 let configuration = Configuration(
-    endpoint: NSURL(string: "http://localhost:3000")!,
+    endpoint: URL(string: "http://localhost:3000")!,
     accessToken: "YOUR ACCESS TOKEN"
 )
 ```
@@ -80,12 +80,12 @@ let configuration = Configuration(
 let garageClient = GarageClient(configuration: configuration)
 garageClient.sendRequest(GetUsersRequest()) { result in
     switch result {
-    case .Success(let response):
+    case .success(let response):
         debugPrint(response)
 
         let users = response.resource
         debugPrint(users)
-    case .Failure(let error):
+    case .failure(let error):
         debugPrint(error)
     }
 }
