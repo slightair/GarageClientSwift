@@ -15,7 +15,7 @@ public protocol GarageRequestParameterContainer {
 
 public extension GarageRequestParameterContainer {
 
-    public var rootKeyPath: [String]? {
+    public var decodeRootKeyPath: KeyPath? {
         return nil
     }
 
