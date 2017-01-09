@@ -1,10 +1,11 @@
 import Foundation
 import APIKit
+import Himotoki
 
 public protocol GarageRequestParameterContainer {
     var method: HTTPMethod { get }
     var path: String { get }
-    var rootKeyPath: [String]? { get }
+    var decodeRootKeyPath: KeyPath? { get }
     var queryParameters: [String: Any]? { get }
     var bodyParameters: BodyParameters? { get }
     var headerFields: [String: String] { get }
