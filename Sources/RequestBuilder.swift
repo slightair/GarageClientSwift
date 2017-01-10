@@ -98,7 +98,8 @@ struct SingleResourceRequest<R: GarageRequest, D: Decodable>: ResourceRequest wh
 
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
         let parameters = headerParameters(from: urlResponse)
-        if let rootKeyPath = baseRequest.decodeRootKeyPath {
+
+        if let decodeResponseOption = baseRequest as? GarageDecodeResponseOption, let rootKeyPath = decodeResponseOption.decodeRootKeyPath {
             guard let resource: D = try? decodeValue(object, rootKeyPath: rootKeyPath) else {
                 throw ResponseError.unexpectedObject(object)
             }
@@ -119,15 +120,15 @@ struct MultipleResourceRequest<R: GarageRequest, D: Decodable>: ResourceRequest 
     let configuration: GarageConfiguration
 
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
-
         let parameters = headerParameters(from: urlResponse)
-        if let rootKeyPath = baseRequest.decodeRootKeyPath {
-            guard let resource: [D] = try decodeArray(object, rootKeyPath: rootKeyPath) as [D]? else {
+
+        if let decodeResponseOption = baseRequest as? GarageDecodeResponseOption, let rootKeyPath = decodeResponseOption.decodeRootKeyPath {
+            guard let resource: [D] = try? decodeArray(object, rootKeyPath: rootKeyPath) else {
                 throw ResponseError.unexpectedObject(object)
             }
             return GarageResponse(resource: resource, totalCount: parameters.totalCount, linkHeader: parameters.linkHeader)
         } else {
-            guard let resource: [D] = try decodeArray(object) as [D]? else {
+            guard let resource: [D] = try? decodeArray(object) else {
                 throw ResponseError.unexpectedObject(object)
             }
             return GarageResponse(resource: resource, totalCount: parameters.totalCount, linkHeader: parameters.linkHeader)
