@@ -5,7 +5,6 @@ import Himotoki
 public protocol GarageRequestParameterContainer {
     var method: HTTPMethod { get }
     var path: String { get }
-    var decodeRootKeyPath: KeyPath? { get }
     var queryParameters: [String: Any]? { get }
     var bodyParameters: BodyParameters? { get }
     var headerFields: [String: String] { get }
@@ -13,12 +12,11 @@ public protocol GarageRequestParameterContainer {
     func intercept(urlRequest: NSMutableURLRequest) throws -> NSMutableURLRequest
 }
 
+public protocol GarageDecodeResponseOption {
+    var decodeRootKeyPath: KeyPath? { get }
+}
+
 public extension GarageRequestParameterContainer {
-
-    public var decodeRootKeyPath: KeyPath? {
-        return nil
-    }
-
     public var queryParameters: [String: Any]? {
         return nil
     }
@@ -36,6 +34,12 @@ public extension GarageRequestParameterContainer {
     }
 }
 
-public protocol GarageRequest: GarageRequestParameterContainer {
+public extension GarageDecodeResponseOption {
+    public var decodeRootKeyPath: KeyPath? {
+        return nil
+    }
+}
+
+public protocol GarageRequest: GarageRequestParameterContainer, GarageDecodeResponseOption {
     associatedtype Resource
 }
