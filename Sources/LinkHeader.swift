@@ -16,7 +16,7 @@ public struct LinkHeader {
                 guard string.characters.count > 2 else {
                     return ""
                 }
-                return string[string.characters.index(after: string.startIndex)..<string.characters.index(before: string.endIndex)]
+                return String(string[string.characters.index(after: string.startIndex)..<string.characters.index(before: string.endIndex)])
             }
 
             func value(_ field: String) -> String? {

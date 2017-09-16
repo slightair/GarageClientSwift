@@ -13,7 +13,7 @@ public protocol GarageRequestParameterContainer {
 }
 
 public protocol GarageDecodeResponseOption {
-    var decodeRootKeyPath: KeyPath? { get }
+    var decodeRootKeyPath: Himotoki.KeyPath? { get }
 }
 
 public extension GarageRequestParameterContainer {
@@ -35,7 +35,7 @@ public extension GarageRequestParameterContainer {
 }
 
 public extension GarageDecodeResponseOption {
-    public var decodeRootKeyPath: KeyPath? {
+    public var decodeRootKeyPath: Himotoki.KeyPath? {
         return nil
     }
 }
