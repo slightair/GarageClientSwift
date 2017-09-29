@@ -90,7 +90,7 @@ extension ResourceRequest {
     }
 }
 
-struct SingleResourceRequest<R: GarageRequest, D: Decodable>: ResourceRequest where R.Resource == D {
+struct SingleResourceRequest<R: GarageRequest, D: Himotoki.Decodable>: ResourceRequest where R.Resource == D {
     typealias Response = GarageResponse<D>
 
     let baseRequest: GarageRequestParameterContainer
@@ -113,7 +113,7 @@ struct SingleResourceRequest<R: GarageRequest, D: Decodable>: ResourceRequest wh
     }
 }
 
-struct MultipleResourceRequest<R: GarageRequest, D: Decodable>: ResourceRequest where R.Resource: Collection, R.Resource.Iterator.Element == D {
+struct MultipleResourceRequest<R: GarageRequest, D: Himotoki.Decodable>: ResourceRequest where R.Resource: Collection, R.Resource.Iterator.Element == D {
     typealias Response = GarageResponse<[D]>
 
     let baseRequest: GarageRequestParameterContainer
@@ -137,12 +137,12 @@ struct MultipleResourceRequest<R: GarageRequest, D: Decodable>: ResourceRequest 
 }
 
 struct RequestBuilder {
-    static func buildRequest<R: GarageRequest, D: Decodable>
+    static func buildRequest<R: GarageRequest, D: Himotoki.Decodable>
         (from baseRequest: R, configuration: GarageConfiguration) -> SingleResourceRequest<R, D> where R.Resource == D {
         return SingleResourceRequest(baseRequest: baseRequest, configuration: configuration)
     }
 
-    static func buildRequest<R: GarageRequest, D: Decodable>
+    static func buildRequest<R: GarageRequest, D: Himotoki.Decodable>
         (from baseRequest: R, configuration: GarageConfiguration) -> MultipleResourceRequest<R, D> where R.Resource: Collection, R.Resource.Iterator.Element == D {
         return MultipleResourceRequest(baseRequest: baseRequest, configuration: configuration)
     }
