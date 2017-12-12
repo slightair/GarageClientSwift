@@ -75,6 +75,8 @@ extension ResourceRequest {
         let totalCount: Int?
         if let totalCountString = response.allHeaderFields["X-List-Totalcount"] as? String {
             totalCount = Int(totalCountString)
+        } else if let totalCountString = response.allHeaderFields["x-list-totalcount"] as? String {
+            totalCount = Int(totalCountString)
         } else {
             totalCount = nil
         }
