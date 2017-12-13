@@ -49,4 +49,17 @@ open class GarageClient {
             }
         }
     }
+
+    open func sendRequest<R: GarageRequest, D: Swift.Decodable>
+        (_ request: R, handler: @escaping (Result<GarageResponse<D>, SessionTaskError>) -> Void = { result in }) -> SessionTask? where R.Resource == D {
+        let resourceRequest = RequestBuilder.buildRequest(from: request, configuration: configuration)
+        return session.send(resourceRequest) { result in
+            switch result {
+            case .success(let result):
+                handler(.success(result))
+            case .failure(let error):
+                handler(.failure(error))
+            }
+        }
+    }
 }

@@ -90,6 +90,21 @@ extension ResourceRequest {
     }
 }
 
+struct CodableParser<D: Swift.Decodable> : DataParser {
+
+    var contentType: String? {
+        return "application/json"
+    }
+
+    func parse(data: Data) throws -> Any {
+
+        guard let resource = try? JSONDecoder().decode(D.self, from: data)  else {
+            throw ResponseError.unexpectedObject(data)
+        }
+        return resource
+    }
+}
+
 struct SingleResourceRequest<R: GarageRequest, D: Himotoki.Decodable>: ResourceRequest where R.Resource == D {
     typealias Response = GarageResponse<D>
 
@@ -136,14 +151,39 @@ struct MultipleResourceRequest<R: GarageRequest, D: Himotoki.Decodable>: Resourc
     }
 }
 
+struct CodableResourceRequest<R: GarageRequest, D: Swift.Decodable>: ResourceRequest where R.Resource == D {
+
+    typealias Response = GarageResponse<D>
+
+    let baseRequest: GarageRequestParameterContainer
+    let configuration: GarageConfiguration
+    var dataParser: DataParser {
+        return CodableParser<R.Resource>()
+    }
+
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> GarageResponse<D> {
+
+        let parameters = headerParameters(from: urlResponse)
+        guard let resource = object as? D else {
+            throw ResponseError.unexpectedObject(object)
+        }
+        return GarageResponse(resource: resource, totalCount: parameters.totalCount, linkHeader: parameters.linkHeader)
+    }
+}
+
 struct RequestBuilder {
     static func buildRequest<R: GarageRequest, D: Himotoki.Decodable>
-        (from baseRequest: R, configuration: GarageConfiguration) -> SingleResourceRequest<R, D> where R.Resource == D {
+        (from baseRequest: R, configuration: GarageConfiguration) -> SingleResourceRequest<R, D> {
         return SingleResourceRequest(baseRequest: baseRequest, configuration: configuration)
     }
 
     static func buildRequest<R: GarageRequest, D: Himotoki.Decodable>
-        (from baseRequest: R, configuration: GarageConfiguration) -> MultipleResourceRequest<R, D> where R.Resource: Collection, R.Resource.Iterator.Element == D {
+        (from baseRequest: R, configuration: GarageConfiguration) -> MultipleResourceRequest<R, D> where R.Resource: Collection {
         return MultipleResourceRequest(baseRequest: baseRequest, configuration: configuration)
+    }
+
+    static func buildRequest<R: GarageRequest, D: Swift.Decodable>
+        (from baseRequest: R, configuration: GarageConfiguration) -> CodableResourceRequest<R, D> {
+        return CodableResourceRequest(baseRequest: baseRequest, configuration: configuration)
     }
 }
