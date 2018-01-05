@@ -73,7 +73,10 @@ extension ResourceRequest {
 
     func headerParameters(from response: HTTPURLResponse) -> (totalCount: Int?, linkHeader: LinkHeader?) {
 
+        // Convert the header key to lowercase, because allHeaderFields is case-sensitive by Swift bugs.
+        // https://bugs.swift.org/plugins/servlet/mobile#issue/SR-2429
         let keyValues: [String: Any] = response.allHeaderFields.reduce(into: [:]) { $0[String(describing: $1.key).lowercased()] = $1.value}
+
         let totalCount: Int?
         if let totalCountString = keyValues["x-list-totalcount"] as? String {
             totalCount = Int(totalCountString)
