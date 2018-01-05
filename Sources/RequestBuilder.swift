@@ -72,17 +72,17 @@ extension ResourceRequest {
     }
 
     func headerParameters(from response: HTTPURLResponse) -> (totalCount: Int?, linkHeader: LinkHeader?) {
+
+        let keyValues: [String: Any] = response.allHeaderFields.reduce(into: [:]) { $0[String(describing: $1.key).lowercased()] = $1.value}
         let totalCount: Int?
-        if let totalCountString = response.allHeaderFields["X-List-Totalcount"] as? String {
-            totalCount = Int(totalCountString)
-        } else if let totalCountString = response.allHeaderFields["x-list-totalcount"] as? String {
+        if let totalCountString = keyValues["x-list-totalcount"] as? String {
             totalCount = Int(totalCountString)
         } else {
             totalCount = nil
         }
 
         let linkHeader: LinkHeader?
-        if let linkHeaderString = response.allHeaderFields["Link"] as? String {
+        if let linkHeaderString = keyValues["link"] as? String {
             linkHeader = LinkHeader(string: linkHeaderString)
         } else {
             linkHeader = nil
